@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pro 시작하기 · OTT STANDARD</title>
+<style>body{margin:0;background:#0f100e;color:#e9e9ef;font:15px/1.7 -apple-system,"Apple SD Gothic Neo","Noto Sans KR","Hiragino Sans",sans-serif}main{max-width:520px;margin:0 auto;padding:48px 20px 80px;text-align:center}h1{font-size:26px;margin:0 0 6px}.sub{color:#9c9f97;font-size:13px}.card{background:#171814;border:1px solid #31342d;border-radius:16px;padding:22px 20px;margin:26px 0;text-align:left}.price{font-size:28px;font-weight:800;margin:6px 0}.price s{color:#9c9f97;font-size:16px;font-weight:400;margin-right:8px}.tag{display:inline-block;background:#e50914;color:#fff;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}ul{margin:10px 0 0;padding-left:18px;color:#c9cbc4}li{margin:4px 0}button{width:100%;background:#e50914;color:#fff;border:0;border-radius:12px;padding:16px;font-size:17px;font-weight:800;cursor:pointer}button:disabled{opacity:.5}.mail{color:#ffd54a;font-weight:700}.done{display:none;background:#171814;border:1px solid #ffd54a;border-radius:16px;padding:22px}.foot{margin-top:28px;font-size:12px;color:#9c9f97}.foot a{color:#9c9f97}</style>
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script></head><body><main>
+<h1>OTT STANDARD <b style="color:#e50914">Pro</b></h1><div class="sub" id="sub"></div>
+<div class="card" id="card"><span class="tag" id="tag"></span><div class="price" id="price"></div><div id="who"></div><ul id="feat"></ul></div>
+<button id="go" disabled>…</button>
+<div class="done" id="done"></div>
+<div class="foot"><a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a> · <a href="/refund/">Refund</a> · Payments by Paddle</div>
+</main><script>
+// ▼ Paddle 설정 — 라이브 운영 중. 샌드박스로 되돌리려면 ~/paddle-keys.txt 의 상단(Sandbox) 값으로 교체.
+const ENV = "live";
+const TOKEN = "live_4af747ccd05c7a3a6c7153f92ad";
+const PRICE = "pri_01m1tqncs4axdx0r9addkxgxy3";
+const ja = (navigator.language || "").toLowerCase().startsWith("ja");
+const T = ja ? { sub: "30日間無料トライアル · 翌月から自動更新 · いつでも解約可", tag: "リリース記念 50% OFF", price: "<s>月 ¥990</s>月 ¥490", who: "アカウント: ", feat: ["全スクリプト · 単語帳 · チャレンジ · カレンダー", "模擬試験(JLPT · JPT · TOPIK) · スコア分析", "リピート再生 · シーン表示 · 単語保存"], go: "無料トライアルを始める", need: "拡張機能の設定 → アカウント から開いてください", doneTitle: "おめでとうございます！", done: "登録完了！拡張機能に戻ると Pro が有効になります。<br>このページは閉じて構いません。" }
+  : { sub: "첫 30일 무료 체험 · 다음 달부터 자동 갱신 · 언제든 취소", tag: "런칭 기념 50% 할인", price: "<s>월 9,900원</s>월 4,900원", who: "계정: ", feat: ["전체 대본 · 단어장 · 도전 · 캘린더", "모의시험(JLPT · JPT · TOPIK) · 점수 분석", "반복 듣기 · 장면 보기 · 단어 저장"], go: "무료 체험 시작하기", need: "확장 프로그램 설정 → 계정 에서 열어 주세요", doneTitle: "축하합니다!", done: "등록 완료! 확장 프로그램으로 돌아가면 Pro가 켜집니다.<br>이 페이지는 닫아도 됩니다." };
+const $ = (id) => document.getElementById(id);
+$("sub").textContent = T.sub; $("tag").textContent = T.tag; $("price").innerHTML = T.price;
+$("feat").innerHTML = T.feat.map((f) => "<li>" + f + "</li>").join("");
+// 이메일은 URL 해시(#email=)로 전달 — 서버 로그에 남지 않는다
+const email = (new URLSearchParams(location.hash.slice(1)).get("email") || "").trim().toLowerCase();
+$("who").innerHTML = email ? T.who + '<span class="mail">' + email.replace(/[<>&]/g, "") + "</span>" : '<span class="mail">' + T.need + "</span>";
+const go = $("go"); go.textContent = T.go;
+if (email && window.Paddle) {
+  if (ENV === "sandbox") Paddle.Environment.set("sandbox");
+  Paddle.Initialize({ token: TOKEN, eventCallback: (ev) => {
+    if (ev.name === "checkout.completed") {
+      $("card").style.display = "none"; go.style.display = "none"; $("done").style.display = "block"; $("done").innerHTML = '<div style="font-size:24px;font-weight:800;color:#ffd54a;margin-bottom:10px">\ud83c\udf89 ' + T.doneTitle + "</div>" + T.done;
+      celebrate(); // 🎉 폭죽
+      // 확장 안 결제 팝업(iframe)으로 열린 경우: 부모에게 완료를 알려 팝업을 닫고 Pro 상태를 재확인하게 한다
+      try { if (window.parent !== window) window.parent.postMessage({ njpPay: "completed" }, "*"); } catch (e) {}
+    }
+  } });
+  const open = () => Paddle.Checkout.open({ items: [{ priceId: PRICE, quantity: 1 }], customer: { email }, customData: { email, app: "netflixmiru" }, settings: { displayMode: "overlay", locale: ja ? "ja" : "ko", showAddDiscounts: false, allowLogout: false } });
+  go.disabled = false; go.addEventListener("click", open); open();
+}
+
+// ===== 폭죽 연출 — 결제 완료 순간 화면 가득 콘페티 =====
+function celebrate() {
+  const cv = document.createElement("canvas");
+  cv.style.cssText = "position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999";
+  document.body.appendChild(cv);
+  const ctx = cv.getContext("2d");
+  const fit = () => { cv.width = innerWidth; cv.height = innerHeight; };
+  fit(); addEventListener("resize", fit);
+  const COLORS = ["#e50914", "#ffd54a", "#2fd4a0", "#8b7bff", "#ff8a65", "#4fc3f7", "#fff"];
+  const parts = [];
+  const burst = (x, y, n) => { for (let i = 0; i < n; i++) { const a = Math.random() * Math.PI * 2, v = 4 + Math.random() * 7;
+    parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 3, w: 5 + Math.random() * 6, h: 8 + Math.random() * 8,
+      c: COLORS[(Math.random() * COLORS.length) | 0], r: Math.random() * Math.PI, vr: (Math.random() - .5) * .3, life: 90 + Math.random() * 60 }); } };
+  burst(cv.width / 2, cv.height * .35, 90);
+  setTimeout(() => burst(cv.width * .25, cv.height * .3, 60), 350);
+  setTimeout(() => burst(cv.width * .75, cv.height * .3, 60), 700);
+  setTimeout(() => burst(cv.width / 2, cv.height * .25, 70), 1200);
+  let alive = true;
+  (function loop() {
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    let n = 0;
+    for (const p of parts) {
+      if (p.life <= 0) continue; n++;
+      p.life--; p.x += p.vx; p.y += p.vy; p.vy += .16; p.vx *= .99; p.r += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r);
+      ctx.globalAlpha = Math.min(1, p.life / 40); ctx.fillStyle = p.c;
+      ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); ctx.restore();
+    }
+    if (n && alive) requestAnimationFrame(loop); else cv.remove();
+  })();
+  setTimeout(() => { alive = false; }, 6000);
+}
+</script></body></html>

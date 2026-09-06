@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="OTT STANDARD 사용 안내 - 설정·문장 저장·단어장·복습·커뮤니티 등 학습 기능을 한 페이지에서 안내합니다.">
+<title>OTT STANDARD - 배우는 자막</title>
+<link rel="canonical" href="https://ottstandard.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OTT STANDARD">
+<meta property="og:title" content="OTT STANDARD - 배우는 자막">
+<meta property="og:description" content="좋아하는 OTT 영상 자막이 그대로 살아있는 교재가 됩니다. 후리가나·번역·저장·복습·모의시험까지.">
+<meta property="og:url" content="https://ottstandard.com/">
+<meta property="og:image" content="https://ottstandard.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Noto+Sans+JP:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+  :root{
+    --bg:#07080c; --bg2:#0d1020; --panel:#111524; --panel2:#161b2e;
+    --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.16);
+    --ink:#f6f7f2; --mut:#aeb4c2; --mut2:#7d8497;
+    --red:#e50914; --red2:#ff2a35; --gold:#ffd65a; --blue:#8ecbff; --violet:#a78bfa;
+    --good:#4ade80;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans KR","Manrope",system-ui,sans-serif;
+    font-weight:500; line-height:1.6; -webkit-font-smoothing:antialiased;
+    overflow-x:hidden; word-break:keep-all; overflow-wrap:break-word;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+  section{position:relative}
+  h2{font-family:"Manrope","Noto Sans KR",sans-serif;font-weight:800;letter-spacing:-.02em;text-wrap:balance}
+  .eyebrow{font-family:"Manrope",sans-serif;font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+  a{color:inherit}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;overflow:hidden;padding:0 22px;
+    background:
+      radial-gradient(120% 90% at 82% 12%, rgba(229,9,20,.24), transparent 46%),
+      radial-gradient(90% 70% at 50% 112%, rgba(255,150,90,.20), transparent 60%),
+      radial-gradient(70% 60% at 16% 92%, rgba(120,90,220,.20), transparent 62%),
+      linear-gradient(180deg,#0a0d18 0%,#0d1020 44%,#140f1c 78%,#1c1310 100%);
+    border-bottom:1px solid var(--line)}
+  .hero .inner{max-width:1200px;margin:0 auto;padding:60px 0 66px}
+  .bar{position:absolute;left:0;right:0;bottom:0;height:5px;background:linear-gradient(90deg,var(--red2),var(--red) 40%,transparent)}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:13px;font-family:"Manrope",sans-serif;font-weight:800;font-size:26px;letter-spacing:.02em}
+  .brand .logo{width:46px;height:46px;border-radius:12px;overflow:hidden;display:grid;place-items:center;
+    font-family:"Noto Sans JP";font-weight:900;color:#fff;font-size:29px;line-height:1;box-shadow:0 6px 22px rgba(229,9,20,.55)}
+  .brand b{color:var(--red2)}
+  .pass{font-family:"Manrope",sans-serif;font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+    border:1px solid rgba(255,214,90,.5);border-radius:999px;padding:8px 15px;background:rgba(255,214,90,.08);white-space:nowrap}
+  .htitle{margin-top:24px;font-family:"Noto Sans KR",sans-serif;font-weight:900;font-size:clamp(42px,8.2vw,92px);line-height:1.04;letter-spacing:-.03em}
+  .htitle em{font-style:normal;display:inline-block;color:var(--red);letter-spacing:-.04em;text-shadow:0 0 46px rgba(229,9,20,.55)}
+  .tag{margin-top:22px;font-family:"Noto Sans KR",sans-serif;font-weight:700;font-size:clamp(18px,2.4vw,28px);color:#eceef2;letter-spacing:-.01em}
+  .tag2{margin-top:8px;font-family:"Manrope",sans-serif;font-weight:500;font-size:clamp(13px,1.5vw,17px);color:var(--mut2);letter-spacing:.01em}
+  .hero .hbadge{display:inline-flex;align-items:center;gap:9px;margin-top:40px;padding:7px 15px 7px 12px;border-radius:999px;border:1px solid rgba(229,9,20,.34);background:rgba(229,9,20,.10);color:#ffd9db;font-family:"Manrope",sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.05em}
+  .hero .hbadge i{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px rgba(229,9,20,.95)}
+  .hero .hlead{max-width:660px;margin-top:20px;font-family:"Noto Sans KR",sans-serif;font-weight:500;font-size:clamp(14px,1.6vw,16.5px);line-height:1.72;color:#b7bcc8;letter-spacing:-.005em}
+  .hero .hlead b{color:#e9ebf1;font-weight:800}
+  .tag b{color:#fff;font-weight:800}
+
+  .capdemo{margin:40px auto 0;text-align:center}
+  .cap-jp{display:inline-block;white-space:nowrap;max-width:100%;overflow-x:auto;background:rgba(0,0,0,.55);border-radius:14px;padding:10px 26px;
+    font-family:"Noto Sans JP";font-weight:900;font-size:clamp(28px,5vw,56px);line-height:1.85;color:#fff;
+    text-shadow:0 2px 8px rgba(0,0,0,.7);-webkit-text-stroke:.4px #fff}
+  .cap-jp rt{font-size:.4em;color:var(--gold);font-weight:700;-webkit-text-stroke:0}
+  .cap-jp .k{color:var(--blue)}
+  .cap-ko{margin-top:14px;font-family:"Noto Sans KR",sans-serif;font-weight:700;font-size:clamp(16px,2.3vw,28px);color:#e7e9ee;text-shadow:0 2px 6px rgba(0,0,0,.8)}
+
+  /* 실제 제품 화면 */
+  .shot{max-width:1060px;margin:44px auto 0}
+  .shotbox{position:relative}
+  .brandtag{position:absolute;display:inline-flex;align-items:center;gap:.4em;padding:.3em .7em .3em .4em;border-radius:.7em;background:#141518;color:#fff;font:800 clamp(7px,1.15vw,12px)/1 "Manrope",sans-serif;letter-spacing:.02em;white-space:nowrap;box-shadow:0 2px 10px rgba(0,0,0,.55)}
+  .brandtag svg{width:1.5em;height:1.5em;border-radius:.35em;flex:0 0 auto}
+  .brandtag.t1{left:2%;top:2.2%}
+  .shot img.panelov{position:absolute;left:73.6%;top:13.5%;width:22.6%;height:auto;border-radius:2.2%/1.3%;outline:1px solid rgba(255,255,255,.16);box-shadow:0 0 0 5px rgba(8,10,18,.55),0 30px 70px rgba(0,0,0,.7),0 8px 20px rgba(0,0,0,.5)}
+  .shot img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);box-shadow:0 34px 80px rgba(0,0,0,.6)}
+  .shot figcaption{margin-top:13px;text-align:center;font-size:13px;color:var(--mut2)}
+  .shot figcaption b{color:var(--gold);font-weight:700}
+
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;justify-content:center}
+  .chip{font-family:"Noto Sans KR",sans-serif;font-weight:700;font-size:14px;color:#e9eaee;
+    background:rgba(255,255,255,.07);border:1px solid var(--line2);border-radius:999px;padding:9px 17px}
+  .chip .d{color:var(--gold);margin-right:6px}
+
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;margin-top:40px}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:"Noto Sans KR",sans-serif;font-weight:800;font-size:17px;
+    border-radius:14px;padding:16px 30px;cursor:pointer;text-decoration:none;border:1px solid transparent;transition:transform .12s ease,box-shadow .2s ease,background .2s}
+  .btn-primary{background:linear-gradient(180deg,var(--red2),var(--red));color:#fff;box-shadow:0 12px 30px rgba(229,9,20,.4)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(229,9,20,.5)}
+  .btn-primary:active{transform:translateY(0) scale(.98)}
+  .btn-ghost{background:rgba(255,255,255,.06);color:var(--ink);border-color:var(--line2)}
+  .btn-ghost:hover{background:rgba(255,255,255,.11);transform:translateY(-2px)}
+  .cta-note{width:100%;text-align:center;margin-top:14px;font-size:13px;color:var(--mut2)}
+  .cta-note b{color:var(--gold)}
+
+  /* ===== 공통 섹션 ===== */
+  .sec{padding:78px 0}
+  .sec-head{text-align:center;max-width:720px;margin:0 auto 46px}
+  .sec-head h2{font-size:clamp(28px,4.4vw,42px);margin-top:12px}
+  .sec-head p{margin-top:14px;color:var(--mut);font-size:16px}
+
+  /* ===== 매일 새로워지는 (living) ===== */
+  .living{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .living-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:46px;align-items:center;padding:76px 0}
+  .living .eyebrow{display:block;margin-bottom:14px}
+  .living h2{font-size:clamp(28px,4.2vw,44px);line-height:1.15}
+  .living h2 .u{color:var(--red)}
+  .living .lv-lede{margin-top:18px;color:var(--mut);font-size:16.5px;line-height:1.8}
+  .living .lv-lede b{color:var(--ink)}
+  .lv-pts{margin-top:24px;display:grid;gap:15px}
+  .lv-pts>div{display:flex;gap:13px;align-items:flex-start}
+  .lv-pts .lp{font-size:22px;flex:none;line-height:1.4}
+  .lv-pts b{display:block;font-family:"Noto Sans KR";font-weight:700;font-size:16px;color:var(--ink)}
+  .lv-pts span{font-size:14.5px;color:var(--mut);line-height:1.6}
+  .feed{display:grid;gap:14px}
+  .feedcard{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:14px;padding:16px 20px;position:relative;overflow:hidden}
+  .feedcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--red2),var(--red))}
+  .fdate{font-family:"Manrope";font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px}
+  .feedcard .fj{font-family:"Noto Sans JP";font-weight:900;font-size:clamp(19px,2.4vw,23px);color:#fff;line-height:1.75}
+  .feedcard .fj rt{font-size:.4em;color:var(--gold);font-weight:700}
+  .feedcard .fj .k{color:var(--blue)}
+  .feedcard .fk{font-size:14px;color:var(--mut);margin-top:3px}
+  .lv-new{margin-top:4px;text-align:center;font-family:"Manrope","Noto Sans KR";font-weight:800;font-size:14px;color:var(--gold);letter-spacing:.02em}
+
+  /* 이런 분께 */
+  .pains{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .pain{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px 22px}
+  .pain .q{font-size:26px;margin-bottom:10px}
+  .pain h3{font-family:"Noto Sans KR",sans-serif;font-weight:700;font-size:17px;margin-bottom:6px;letter-spacing:-.01em}
+  .pain p{color:var(--mut);font-size:14.5px;line-height:1.55}
+
+  /* 이런 분께 (personas) */
+  .who{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 30px}
+  .who .w{display:flex;gap:13px;align-items:flex-start}
+  .who .we{font-size:24px;flex:none;line-height:1.25}
+  .who b{display:block;font-family:"Noto Sans KR";font-weight:700;font-size:16px;color:var(--ink);margin-bottom:3px}
+  .who span{font-size:14px;color:var(--mut);line-height:1.55}
+
+  /* 기능 그리드 */
+  .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:18px;padding:26px 24px;
+    transition:transform .16s ease,border-color .2s}
+  .card:hover{transform:translateY(-4px);border-color:var(--line2)}
+  .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:24px;margin-bottom:16px;
+    background:rgba(229,9,20,.12);border:1px solid rgba(229,9,20,.3)}
+  .card h3{font-family:"Noto Sans KR",sans-serif;font-weight:700;font-size:18px;letter-spacing:-.01em;margin-bottom:8px}
+  .card p{color:var(--mut);font-size:14.5px;line-height:1.6}
+  .card .tagp{display:inline-block;margin-top:12px;font-family:"Manrope",sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;
+    color:var(--gold);background:rgba(255,214,90,.1);border:1px solid rgba(255,214,90,.3);border-radius:999px;padding:3px 10px}
+
+  /* Free vs Pro */
+  .cmp{background:var(--bg2)}
+  .table{max-width:860px;margin:0 auto;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--panel)}
+  .trow{display:grid;grid-template-columns:1.6fr 1fr 1fr;align-items:center}
+  .trow+.trow{border-top:1px solid var(--line)}
+  .trow>div{padding:16px 18px;font-size:15px}
+  .thead{background:rgba(255,255,255,.03)}
+  .thead>div{font-family:"Manrope","Noto Sans KR",sans-serif;font-weight:800;font-size:14px}
+  .thead .pcol{color:var(--red2)}
+  .fname{color:#e7e9ee;font-weight:500}
+  .ccol{text-align:center;color:var(--mut)}
+  .pcol{text-align:center;font-weight:700;color:#fff}
+  .yes{color:var(--good);font-weight:800}
+  .lock{color:var(--mut2)}
+  .lim{color:var(--gold);font-weight:700;font-size:13.5px}
+
+  /* Pricing */
+  .price{background:
+      radial-gradient(80% 120% at 50% -10%, rgba(229,9,20,.18), transparent 60%),
+      var(--bg)}
+  .pcard{max-width:520px;margin:0 auto;background:linear-gradient(180deg,#14182a,#0f1322);
+    border:1px solid rgba(255,214,90,.3);border-radius:24px;padding:40px 36px;text-align:center;
+    box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.03) inset}
+  .discount-badge{display:inline-block;font-family:"Manrope","Noto Sans KR",sans-serif;font-weight:800;font-size:13px;letter-spacing:.02em;
+    color:#fff;background:linear-gradient(180deg,var(--red2),var(--red));border-radius:999px;padding:7px 16px;margin-bottom:22px;
+    box-shadow:0 6px 18px rgba(229,9,20,.4)}
+  .pcard .plabel{font-family:"Manrope",sans-serif;font-weight:800;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+  .pcard .plabel b{color:var(--red2)}
+  .priceline{margin:16px 0 6px;display:flex;align-items:baseline;justify-content:center;gap:14px;flex-wrap:wrap}
+  .was{font-family:"Manrope",sans-serif;font-weight:600;font-size:26px;color:var(--mut2);text-decoration:line-through;text-decoration-color:rgba(255,120,120,.7)}
+  .now{font-family:"Manrope","Noto Sans KR",sans-serif;font-weight:800;font-size:60px;line-height:1;letter-spacing:-.02em}
+  .now .won{font-size:34px;vertical-align:6px;margin-right:2px}
+  .per{color:var(--mut);font-size:15px;margin-bottom:22px}
+  .per b{color:var(--ink)}
+  .plist{text-align:left;margin:24px auto 28px;max-width:340px;display:grid;gap:11px}
+  .plist div{font-size:15px;color:#dfe2ea;display:flex;gap:10px;align-items:flex-start}
+  .plist .ck{color:var(--good);font-weight:900;flex:none}
+  .pcard .btn-primary{width:100%;justify-content:center;font-size:18px;padding:17px}
+  .pfine{margin-top:16px;font-size:12.5px;color:var(--mut2);line-height:1.6}
+
+  /* how it works */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+  .step{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px 22px}
+  .step::before{counter-increment:s;content:counter(s);position:absolute;top:-14px;left:22px;
+    width:34px;height:34px;border-radius:10px;background:var(--red);color:#fff;font-family:"Manrope";font-weight:800;
+    display:grid;place-items:center;box-shadow:0 6px 16px rgba(229,9,20,.4)}
+  .step h3{font-family:"Noto Sans KR",sans-serif;font-weight:700;font-size:17px;margin:8px 0 6px}
+  .step p{color:var(--mut);font-size:14.5px;line-height:1.6}
+
+  /* faq */
+  .faq{max-width:860px;margin:0 auto;display:grid;gap:12px}
+  .qa{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .qa h3{font-family:"Noto Sans KR",sans-serif;font-weight:700;font-size:16px;margin-bottom:7px}
+  .qa h3::before{content:"Q. ";color:var(--gold)}
+  .qa p{color:var(--mut);font-size:14.5px;line-height:1.6}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--mut2);font-size:13px}
+  footer .fbrand{display:flex;justify-content:center;align-items:center;gap:9px;font-family:"Manrope",sans-serif;font-weight:800;color:var(--ink);font-size:18px;margin-bottom:10px;letter-spacing:.03em}
+  footer .fbrand .flogo{width:30px;height:30px;border-radius:9px;overflow:hidden;display:grid;place-items:center;font-family:"Noto Sans JP";font-weight:900;color:#fff;font-size:19px;line-height:1;box-shadow:0 4px 14px rgba(229,9,20,.5)}
+  .brand .logo svg,footer .fbrand .flogo svg{width:100%;height:100%;display:block}
+  footer a{color:var(--mut);text-decoration:none;margin:0 8px}
+  footer a:hover{color:var(--gold)}
+
+  @media(max-width:820px){
+    .pains,.feat,.steps,.who,.living-grid{grid-template-columns:1fr 1fr}
+    .living-grid{grid-template-columns:1fr;gap:34px}
+    .htitle{margin-top:28px}
+  }
+  @media(max-width:560px){
+    .pains,.feat,.steps,.who{grid-template-columns:1fr}
+    .trow{grid-template-columns:1.4fr .8fr .8fr}
+    .trow>div{padding:13px 12px;font-size:13.5px}
+    .now{font-size:48px}
+    .top{flex-direction:column;align-items:flex-start;gap:14px}
+    .brand{font-size:21px;gap:11px}
+    .brand span{white-space:nowrap}
+    .brand .logo{width:40px;height:40px;flex:0 0 40px}
+    .hero .hbadge{margin-top:26px}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="inner">
+    <div class="top">
+      <div class="brand"><span class="logo"><svg viewBox="0 0 1024 1024" aria-hidden="true"><rect width="1024" height="1024" rx="196" fill="#F20D22"/><rect x="176" y="220" width="672" height="560" rx="92" fill="#FFF9F4"/><rect x="268" y="610" width="420" height="34" rx="17" fill="#F20D22"/><rect x="268" y="680" width="310" height="34" rx="17" fill="#F20D22"/></svg></span><span>OTT STANDARD <b>Pro</b></span></div>
+      <div class="pass">30일 무료 체험</div>
+    </div>
+
+    <div class="hbadge"><i></i>일본어 · 한국어 자막 학습 확장</div>
+    <h1 class="htitle">배우는 자막,<br><em>OTT&nbsp;STANDARD</em></h1>
+    <div class="tag">좋아하는 OTT 영상 자막이 그대로 <b>살아있는 교재</b>가 됩니다</div>
+    <div class="tag2">Learn Japanese &amp; Korean from the videos you love</div>
+    <p class="hlead">후리가나·한자 강조·문맥 번역이 영상 위에 <b>실시간</b>으로 얹히고, 마음에 든 문장은 눌러서 <b>저장</b> → <b>복습 퀴즈</b>로 완성해요.</p>
+
+    <figure class="shot">
+      <div class="shotbox">
+      <img src="/hero.jpg" alt="영상 위에 OTT STANDARD 학습 패널이 떠서 후리가나·번역 자막과 저장·복습 기능을 보여주는 실제 화면"></div>
+      <figcaption>영상 위에 <b>후리가나·번역</b>이 얹히고, 마음에 든 장면은 <b>저장·복습</b> - 실제 학습 화면</figcaption>
+    </figure>
+
+    <div class="chips">
+      <span class="chip"><span class="d">·</span>후리가나 읽기</span>
+      <span class="chip"><span class="d">·</span>문맥 번역</span>
+      <span class="chip"><span class="d">·</span>장면 다시 보기</span>
+      <span class="chip"><span class="d">·</span>저장 · 복습</span>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#pricing">🎉 런칭 특가로 시작하기</a>
+      <a class="btn btn-ghost" href="#features">기능 살펴보기</a>
+      <a class="btn btn-ghost" href="/docs/">📘 조금 더 알아보기</a>
+      <div class="cta-note"><b>런칭 기념 50% 할인</b> · <b>30일 무료 체험</b> 후 월 <b>4,900원</b> · 언제든 해지</div>
+    </div>
+  </div>
+  <div class="bar"></div>
+</header>
+
+<!-- ===== 매일 새로워지는 OTT ===== -->
+<section class="living">
+  <div class="wrap">
+    <div class="living-grid">
+      <div>
+        <span class="eyebrow">한 번 결제, 매일 새로운 교재</span>
+        <h2>책은 멈춰 있지만,<br><span class="u">OTT는 매일 새로워집니다</span></h2>
+        <p class="lv-lede">교재 속 문장은 몇 년째 그대로예요. 하지만 OTT엔 매일 새 드라마·예능이 올라오죠. OTT STANDARD와 함께라면 그 새 콘텐츠가 곧 <b>매일 새로운 일본어 단어와 문장</b>이 됩니다. 커피 한 잔 값으로, 멈추지 않는 살아있는 네이티브 일본어를요.</p>
+        <div class="lv-pts">
+          <div><span class="lp">📈</span><div><b>매일 새로워지는 교재</b><span>새 콘텐츠가 올라올수록 배울 문장도 계속 늘어나요.</span></div></div>
+          <div><span class="lp">🗣️</span><div><b>살아있는 네이티브 표현</b><span>책엔 없는 진짜 회화체, 지금 쓰는 말 그대로.</span></div></div>
+          <div><span class="lp">✨</span><div><b>2026 최신 트렌드</b><span>요즘 유행하는 드라마·유행어로 배우는 오늘의 일본어.</span></div></div>
+        </div>
+      </div>
+      <div class="feed">
+        <div class="feedcard"><span class="fdate">오늘 · First Love</span><div class="fj"><ruby><span class="k">今</span><rt>いま</rt></ruby>、<ruby><span class="k">会</span><rt>あ</rt></ruby>いに<ruby><span class="k">行</span><rt>ゆ</rt></ruby>くよ</div><div class="fk">지금, 만나러 갈게</div></div>
+        <div class="feedcard"><span class="fdate">어제 · 사랑 후에 오는 것들</span><div class="fj"><ruby><span class="k">好</span><rt>す</rt></ruby>きにならずにいられない</div><div class="fk">좋아하지 않고는 못 배기겠어</div></div>
+        <div class="feedcard"><span class="fdate">그저께 · 아이 러브 유</span><div class="fj"><ruby><span class="k">明日</span><rt>あした</rt></ruby>もいい<ruby><span class="k">日</span><rt>ひ</rt></ruby>になるよ</div><div class="fk">내일도 좋은 날이 될 거야</div></div>
+        <div class="lv-new">매일 +새 문장이 쌓여요 ↑</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 이런 분께 ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Why OTT STANDARD</div>
+      <h2>OTT로 공부하고 싶은데,<br>자막이 너무 빨리 지나가나요?</h2>
+      <p>OTT STANDARD는 좋아하는 OTT 영상을 그대로 살아있는 교재로 바꿔줍니다.</p>
+    </div>
+    <div class="pains">
+      <div class="pain"><div class="q">😵</div><h3>한자를 못 읽어요</h3><p>모든 한자 위에 후리가나(읽는 법)가 자동으로 붙어, 사전 없이 바로 읽혀요.</p></div>
+      <div class="pain"><div class="q">🌀</div><h3>번역이 어색해요</h3><p>앞뒤 대사 흐름을 이어 자연스러운 한국어로. 인사·관용구도 사람처럼 번역해요.</p></div>
+      <div class="pain"><div class="q">💨</div><h3>금방 잊어버려요</h3><p>마음에 든 장면·단어를 저장하고, 복습 퀴즈로 오래 기억에 남겨요.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 이런 분께 ===== -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">For you</div><h2>이런 분께 잘 맞아요</h2></div>
+    <div class="who">
+      <div class="w"><span class="we">🎬</span><div><b>영상으로 일본어 공부</b><span>좋아하는 작품을 즐기면서 자연스럽게 익히고 싶은 분</span></div></div>
+      <div class="w"><span class="we">📺</span><div><b>애니 · 드라마 팬</b><span>좋아하는 애니·드라마의 대사를 그대로 배우고 싶은 분</span></div></div>
+      <div class="w"><span class="we">🇰🇷</span><div><b>한국어 배우는 외국인</b><span>'한국어 공부'로 전환하면 한국어 학습에도 그대로</span></div></div>
+      <div class="w"><span class="we">🌱</span><div><b>초급 ~ 중급 학습자</b><span>후리가나·번역을 켜고 끄며 내 실력에 맞춰서</span></div></div>
+      <div class="w"><span class="we">⭐</span><div><b>모아서 복습하고 싶은 분</b><span>마음에 든 문장을 저장하고 단어장·복습으로 다시</span></div></div>
+      <div class="w"><span class="we">🔥</span><div><b>꾸준함이 어려운 분</b><span>XP·랭킹·커뮤니티로 혼자서도 재미있게 이어가요</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 기능 ===== -->
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Features</div>
+      <h2>영상 한 편이, 나만의 일본어·한국어 교실로</h2>
+    </div>
+    <div class="feat">
+      <div class="card"><div class="ico">🈁</div><h3>후리가나 · 한자 강조</h3><p>한자 위에 읽는 법을 표시하고, 중요한 한자는 색으로 강조해 한눈에 들어와요.</p></div>
+      <div class="card"><div class="ico">🔁</div><h3>한·일 동시 자막</h3><p>원문과 번역을 위아래로 함께 표시. 일본어를 보며 뜻을 바로 확인해요.</p></div>
+      <div class="card"><div class="ico">🧠</div><h3>문맥 번역</h3><p>한 줄씩 직역이 아니라 앞뒤 대사를 이어 자연스럽게. 관용구 사전까지 내장.</p></div>
+      <div class="card"><div class="ico">💾</div><h3>문장 저장</h3><p>마음에 드는 대사를 영상 화면의 저장 버튼으로 바로 보관해요. <span class="tagp">FREE도 가능</span></p></div>
+      <div class="card"><div class="ico">🎬</div><h3>장면 다시 보기</h3><p>저장한 문장의 그 장면으로 영상이 바로 점프. 발음·억양을 반복해서 들어요.</p></div>
+      <div class="card"><div class="ico">📕</div><h3>나만의 단어장</h3><p>모르는 단어를 탭 한 번으로 저장. 뜻·품사·예문이 정리된 단어장이 쌓여요.</p></div>
+      <div class="card"><div class="ico">✅</div><h3>복습 퀴즈 · 간격 반복</h3><p>O/X와 객관식 퀴즈를 양방향으로. 잊을 때쯤 다시 물어보는 간격 반복(SRS).</p></div>
+      <div class="card"><div class="ico">🏆</div><h3>오늘의 랭킹</h3><p>학습자들끼리 XP로 겨루는 실시간 랭킹. 꾸준히 공부할 동기를 만들어요.</p></div>
+      <div class="card"><div class="ico">💬</div><h3>게시판 · 채팅</h3><p>같이 공부하는 사람들과 질문하고 이야기하는 커뮤니티 공간.</p></div>
+      <div class="card"><div class="ico">🔄</div><h3>계정 동기화</h3><p>로그인하면 XP·저장 문장·단어가 계정에 보관돼, 기기를 바꿔도 그대로 이어져요.</p></div>
+      <div class="card"><div class="ico">🎚️</div><h3>내 수준에 맞춤</h3><p>후리가나·번역을 켜고 끄고, 읽는 법 범위(전체/어려운 한자만)와 자막 크기·위치까지 조절해요.</p></div>
+      <div class="card"><div class="ico">🔊</div><h3>발음 듣기 · 천천히 듣기</h3><p>단어와 문장의 소리를 듣고, 천천히 듣기로 한 음절씩 또박또박 확인해요.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Free vs Pro ===== -->
+<section class="sec cmp">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Free vs Pro</div>
+      <h2>무료로 맛보고, Pro로 전부 열기</h2>
+      <p>무료로도 핵심을 써볼 수 있어요. Pro는 하루 제한과 잠금을 모두 풀어줍니다.</p>
+    </div>
+    <div class="table">
+      <div class="trow thead"><div>기능</div><div class="ccol">무료</div><div class="pcol">Pro</div></div>
+      <div class="trow"><div class="fname">문장 저장</div><div class="ccol"><span class="yes">✓</span></div><div class="pcol"><span class="yes">✓</span></div></div>
+      <div class="trow"><div class="fname">반복 듣기 · 장면 · 단어 · 문맥</div><div class="ccol"><span class="lim">하루 20회</span></div><div class="pcol"><span class="yes">무제한</span></div></div>
+      <div class="trow"><div class="fname">나만의 단어장</div><div class="ccol"><span class="lock">🔒</span></div><div class="pcol"><span class="yes">✓</span></div></div>
+      <div class="trow"><div class="fname">복습 퀴즈 · 간격 반복</div><div class="ccol"><span class="lock">🔒</span></div><div class="pcol"><span class="yes">✓</span></div></div>
+      <div class="trow"><div class="fname">오늘의 랭킹</div><div class="ccol"><span class="lock">🔒</span></div><div class="pcol"><span class="yes">✓</span></div></div>
+      <div class="trow"><div class="fname">게시판 · 채팅</div><div class="ccol"><span class="yes">✓</span></div><div class="pcol"><span class="yes">✓</span></div></div>
+      <div class="trow"><div class="fname">미리보기 재생</div><div class="ccol"><span class="lock">🔒</span></div><div class="pcol"><span class="yes">✓</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Pricing ===== -->
+<section class="sec price" id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Pricing</div>
+      <h2>지금은 런칭 특가</h2>
+    </div>
+    <div class="pcard">
+      <div class="discount-badge">🎉 런칭 기념 50% 할인</div>
+      <div class="plabel">OTT STANDARD <b>Pro</b> · 월 구독</div>
+      <div class="priceline">
+        <span class="was">₩9,900</span>
+        <span class="now"><span class="won">₩</span>4,900</span>
+      </div>
+      <div class="per"><b>30일 무료 체험</b> 후 월 결제 · 모든 기능 무제한 · 커피 한 잔 값</div>
+      <div class="plist">
+        <div><span class="ck">✓</span>하루 제한 없이 반복 듣기 · 장면 · 단어 · 문맥</div>
+        <div><span class="ck">✓</span>단어장 · 복습 퀴즈 · 간격 반복 전체 해제</div>
+        <div><span class="ck">✓</span>오늘의 랭킹 잠금 해제</div>
+        <div><span class="ck">✓</span>다양한 OTT 영상 자막 지원</div>
+      </div>
+      <a class="btn btn-primary" href="/pay/" id="buy-btn">30일 무료로 시작하기</a>
+      <div class="pfine">안전한 글로벌 결제(Paddle) · 카드 결제<br>30일 무료 체험 후 매월 자동 갱신 · 언제든 해지<br>체험 중 해지하면 요금 없음 · 구글 로그인만 하면 Pro 즉시 적용</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== How ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">How it works</div>
+      <h2>세 단계면 끝</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>OTT STANDARD 설치</h3><p>크롬 웹스토어에서 OTT STANDARD 확장을 설치하고 OTT 영상을 열어요.</p></div>
+      <div class="step"><h3><span style="color:var(--red2)">Pro</span> 시작</h3><p>구글 계정으로 로그인하고 30일 무료 체험을 시작해요. 결제는 Paddle이 안전하게 처리해요.</p></div>
+      <div class="step"><h3>바로 해제</h3><p>로그인만 하면 Pro 기능이 즉시 켜져요. 체험이 끝나기 전에 해지하면 요금이 없어요.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="sec cmp">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">FAQ</div><h2>자주 묻는 질문</h2></div>
+    <div class="faq">
+      <div class="qa"><h3>자동으로 매달 결제되나요?</h3><p>네. 30일 무료 체험 후 매월 자동 갱신돼요. 다음 결제일 전에 언제든 해지할 수 있고, 체험 중 해지하면 요금이 청구되지 않아요.</p></div>
+      <div class="qa"><h3>해외에서도 결제되나요?</h3><p>네. 글로벌 결제 대행사(Paddle)를 사용해 한국·일본을 포함한 전 세계에서 카드로 결제할 수 있어요. 영수증은 Paddle 명의로 발행돼요.</p></div>
+      <div class="qa"><h3>여러 기기에서 쓸 수 있나요?</h3><p>네. 같은 구글 계정으로 로그인하면 어느 기기에서든 Pro가 그대로 적용돼요.</p></div>
+      <div class="qa"><h3>무료로도 쓸 수 있나요?</h3><p>네. 문장 저장과 하루 20회의 핵심 기능은 무료로 체험할 수 있어요. Pro는 제한과 잠금을 모두 풀어줍니다.</p></div>
+      <div class="qa"><h3>한국어 공부에도 쓸 수 있나요?</h3><p>네. 설정에서 '한국어 공부'로 전환하면 한국어를 배우는 분들을 위한 학습 자막으로도 쓸 수 있어요.</p></div>
+      <div class="qa"><h3>기기를 바꾸면 저장한 내용은요?</h3><p>계정에 로그인해 쓰면 XP·저장 문장·단어가 계정에 보관돼, 다른 기기에서도 그대로 이어집니다.</p></div>
+      <div class="qa"><h3>단어 발음을 들을 수 있나요?</h3><p>네. 단어장에서 단어를 열면 발음 듣기와 천천히 듣기로 소리를 확인할 수 있어요.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fbrand"><span class="flogo"><svg viewBox="0 0 1024 1024" aria-hidden="true"><rect width="1024" height="1024" rx="196" fill="#F20D22"/><rect x="176" y="220" width="672" height="560" rx="92" fill="#FFF9F4"/><rect x="268" y="610" width="420" height="34" rx="17" fill="#F20D22"/><rect x="268" y="680" width="310" height="34" rx="17" fill="#F20D22"/></svg></span>OTT STANDARD</div>
+  좋아하는 영상 자막으로 일본어·한국어를 공부하다<br>
+  <div style="margin-top:12px">
+    <a href="#features">기능</a>·<a href="/docs/">사용 설명서</a>·<a href="#pricing">가격</a>·<a href="#">문의</a>·<a href="/terms/">이용약관</a>·<a href="/refund/">환불정책</a>·<a href="/privacy/">개인정보처리방침</a>
+  </div>
+  <div style="margin-top:14px;color:var(--mut2);font-size:12px">© 2026 PROMVERS · OTT STANDARD. Not affiliated with any streaming (OTT) service.</div>
+</footer>
+</body>
+</html>
