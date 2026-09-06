@@ -23,7 +23,7 @@
     --bg:#07080c; --bg2:#0d1020; --panel:#111524; --panel2:#161b2e;
     --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.16);
     --ink:#f6f7f2; --mut:#aeb4c2; --mut2:#7d8497;
-    --red:#e11d48; --red2:#f43f5e; --gold:#ffd65a; --blue:#8ecbff; --violet:#a78bfa;
+    --red:#e50914; --red2:#ff2a35; --gold:#ffd65a; --blue:#8ecbff; --violet:#a78bfa;
     --good:#4ade80;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -43,7 +43,7 @@
   /* ===== HERO ===== */
   .hero{position:relative;overflow:hidden;padding:0 22px;
     background:
-      radial-gradient(120% 90% at 82% 12%, rgba(225,29,72,.24), transparent 46%),
+      radial-gradient(120% 90% at 82% 12%, rgba(229,9,20,.24), transparent 46%),
       radial-gradient(90% 70% at 50% 112%, rgba(255,150,90,.20), transparent 60%),
       radial-gradient(70% 60% at 16% 92%, rgba(120,90,220,.20), transparent 62%),
       linear-gradient(180deg,#0a0d18 0%,#0d1020 44%,#140f1c 78%,#1c1310 100%);
@@ -53,16 +53,16 @@
   .top{display:flex;align-items:center;justify-content:space-between;gap:16px}
   .brand{display:flex;align-items:center;gap:13px;font-family:"Manrope",sans-serif;font-weight:800;font-size:26px;letter-spacing:.02em}
   .brand .logo{width:46px;height:46px;border-radius:12px;overflow:hidden;display:grid;place-items:center;
-    font-family:"Noto Sans JP";font-weight:900;color:#fff;font-size:29px;line-height:1;box-shadow:0 6px 22px rgba(225,29,72,.55)}
+    font-family:"Noto Sans JP";font-weight:900;color:#fff;font-size:29px;line-height:1;box-shadow:0 6px 22px rgba(229,9,20,.55)}
   .brand b{color:var(--red2)}
   .pass{font-family:"Manrope",sans-serif;font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
     border:1px solid rgba(255,214,90,.5);border-radius:999px;padding:8px 15px;background:rgba(255,214,90,.08);white-space:nowrap}
   .htitle{margin-top:24px;font-family:"Noto Sans KR",sans-serif;font-weight:900;font-size:clamp(42px,8.2vw,92px);line-height:1.04;letter-spacing:-.03em}
-  .htitle em{font-style:normal;display:inline-block;color:var(--red);letter-spacing:-.04em;text-shadow:0 0 46px rgba(225,29,72,.55)}
+  .htitle em{font-style:normal;display:inline-block;color:var(--red);letter-spacing:-.04em;text-shadow:0 0 46px rgba(229,9,20,.55)}
   .tag{margin-top:22px;font-family:"Noto Sans KR",sans-serif;font-weight:700;font-size:clamp(18px,2.4vw,28px);color:#eceef2;letter-spacing:-.01em}
   .tag2{margin-top:8px;font-family:"Manrope",sans-serif;font-weight:500;font-size:clamp(13px,1.5vw,17px);color:var(--mut2);letter-spacing:.01em}
-  .hero .hbadge{display:inline-flex;align-items:center;gap:9px;margin-top:40px;padding:7px 15px 7px 12px;border-radius:999px;border:1px solid rgba(225,29,72,.34);background:rgba(225,29,72,.10);color:#ffd9db;font-family:"Manrope",sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.05em}
-  .hero .hbadge i{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px rgba(225,29,72,.95)}
+  .hero .hbadge{display:inline-flex;align-items:center;gap:9px;margin-top:40px;padding:7px 15px 7px 12px;border-radius:999px;border:1px solid rgba(229,9,20,.34);background:rgba(229,9,20,.10);color:#ffd9db;font-family:"Manrope",sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.05em}
+  .hero .hbadge i{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px rgba(229,9,20,.95)}
   .hero .hlead{max-width:660px;margin-top:20px;font-family:"Noto Sans KR",sans-serif;font-weight:500;font-size:clamp(14px,1.6vw,16.5px);line-height:1.72;color:#b7bcc8;letter-spacing:-.005em}
   .hero .hlead b{color:#e9ebf1;font-weight:800}
   .tag b{color:#fff;font-weight:800}
@@ -94,8 +94,8 @@
   .cta-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;margin-top:40px}
   .btn{display:inline-flex;align-items:center;gap:9px;font-family:"Noto Sans KR",sans-serif;font-weight:800;font-size:17px;
     border-radius:14px;padding:16px 30px;cursor:pointer;text-decoration:none;border:1px solid transparent;transition:transform .12s ease,box-shadow .2s ease,background .2s}
-  .btn-primary{background:linear-gradient(180deg,var(--red2),var(--red));color:#fff;box-shadow:0 12px 30px rgba(225,29,72,.4)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(225,29,72,.5)}
+  .btn-primary{background:linear-gradient(180deg,var(--red2),var(--red));color:#fff;box-shadow:0 12px 30px rgba(229,9,20,.4)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(229,9,20,.5)}
   .btn-primary:active{transform:translateY(0) scale(.98)}
   .btn-ghost{background:rgba(255,255,255,.06);color:var(--ink);border-color:var(--line2)}
   .btn-ghost:hover{background:rgba(255,255,255,.11);transform:translateY(-2px)}
@@ -151,7 +151,7 @@
     transition:transform .16s ease,border-color .2s}
   .card:hover{transform:translateY(-4px);border-color:var(--line2)}
   .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:24px;margin-bottom:16px;
-    background:rgba(225,29,72,.12);border:1px solid rgba(225,29,72,.3)}
+    background:rgba(229,9,20,.12);border:1px solid rgba(229,9,20,.3)}
   .card h3{font-family:"Noto Sans KR",sans-serif;font-weight:700;font-size:18px;letter-spacing:-.01em;margin-bottom:8px}
   .card p{color:var(--mut);font-size:14.5px;line-height:1.6}
   .card .tagp{display:inline-block;margin-top:12px;font-family:"Manrope",sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;
@@ -175,14 +175,14 @@
 
   /* Pricing */
   .price{background:
-      radial-gradient(80% 120% at 50% -10%, rgba(225,29,72,.18), transparent 60%),
+      radial-gradient(80% 120% at 50% -10%, rgba(229,9,20,.18), transparent 60%),
       var(--bg)}
   .pcard{max-width:520px;margin:0 auto;background:linear-gradient(180deg,#14182a,#0f1322);
     border:1px solid rgba(255,214,90,.3);border-radius:24px;padding:40px 36px;text-align:center;
     box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.03) inset}
   .discount-badge{display:inline-block;font-family:"Manrope","Noto Sans KR",sans-serif;font-weight:800;font-size:13px;letter-spacing:.02em;
     color:#fff;background:linear-gradient(180deg,var(--red2),var(--red));border-radius:999px;padding:7px 16px;margin-bottom:22px;
-    box-shadow:0 6px 18px rgba(225,29,72,.4)}
+    box-shadow:0 6px 18px rgba(229,9,20,.4)}
   .pcard .plabel{font-family:"Manrope",sans-serif;font-weight:800;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
   .pcard .plabel b{color:var(--red2)}
   .priceline{margin:16px 0 6px;display:flex;align-items:baseline;justify-content:center;gap:14px;flex-wrap:wrap}
@@ -202,7 +202,7 @@
   .step{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px 22px}
   .step::before{counter-increment:s;content:counter(s);position:absolute;top:-14px;left:22px;
     width:34px;height:34px;border-radius:10px;background:var(--red);color:#fff;font-family:"Manrope";font-weight:800;
-    display:grid;place-items:center;box-shadow:0 6px 16px rgba(225,29,72,.4)}
+    display:grid;place-items:center;box-shadow:0 6px 16px rgba(229,9,20,.4)}
   .step h3{font-family:"Noto Sans KR",sans-serif;font-weight:700;font-size:17px;margin:8px 0 6px}
   .step p{color:var(--mut);font-size:14.5px;line-height:1.6}
 
@@ -215,7 +215,7 @@
 
   footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--mut2);font-size:13px}
   footer .fbrand{display:flex;justify-content:center;align-items:center;gap:9px;font-family:"Manrope",sans-serif;font-weight:800;color:var(--ink);font-size:18px;margin-bottom:10px;letter-spacing:.03em}
-  footer .fbrand .flogo{width:30px;height:30px;border-radius:9px;overflow:hidden;display:grid;place-items:center;font-family:"Noto Sans JP";font-weight:900;color:#fff;font-size:19px;line-height:1;box-shadow:0 4px 14px rgba(225,29,72,.5)}
+  footer .fbrand .flogo{width:30px;height:30px;border-radius:9px;overflow:hidden;display:grid;place-items:center;font-family:"Noto Sans JP";font-weight:900;color:#fff;font-size:19px;line-height:1;box-shadow:0 4px 14px rgba(229,9,20,.5)}
   .brand .logo svg,footer .fbrand .flogo svg{width:100%;height:100%;display:block}
   footer a{color:var(--mut);text-decoration:none;margin:0 8px}
   footer a:hover{color:var(--gold)}
