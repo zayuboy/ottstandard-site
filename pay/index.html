@@ -1,8 +1,8 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Pro 시작하기 · OTT STANDARD</title>
-<style>body{margin:0;background:#0f100e;color:#e9e9ef;font:15px/1.7 -apple-system,"Apple SD Gothic Neo","Noto Sans KR","Hiragino Sans",sans-serif}main{max-width:520px;margin:0 auto;padding:48px 20px 80px;text-align:center}h1{font-size:26px;margin:0 0 6px}.sub{color:#9c9f97;font-size:13px}.card{background:#171814;border:1px solid #31342d;border-radius:16px;padding:22px 20px;margin:26px 0;text-align:left}.price{font-size:28px;font-weight:800;margin:6px 0}.price s{color:#9c9f97;font-size:16px;font-weight:400;margin-right:8px}.tag{display:inline-block;background:#ff2a35;color:#fff;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}ul{margin:10px 0 0;padding-left:18px;color:#c9cbc4}li{margin:4px 0}button{width:100%;background:#ff2a35;color:#fff;border:0;border-radius:12px;padding:16px;font-size:17px;font-weight:800;cursor:pointer}button:disabled{opacity:.5}.mail{color:#ffd54a;font-weight:700}.done{display:none;background:#171814;border:1px solid #ffd54a;border-radius:16px;padding:22px}.foot{margin-top:28px;font-size:12px;color:#9c9f97}.foot a{color:#9c9f97}</style>
+<style>body{margin:0;background:#0f100e;color:#e9e9ef;font:15px/1.7 -apple-system,"Apple SD Gothic Neo","Noto Sans KR","Hiragino Sans",sans-serif}main{max-width:520px;margin:0 auto;padding:48px 20px 80px;text-align:center}h1{font-size:26px;margin:0 0 6px}.sub{color:#9c9f97;font-size:13px}.card{background:#171814;border:1px solid #31342d;border-radius:16px;padding:22px 20px;margin:26px 0;text-align:left}.price{font-size:28px;font-weight:800;margin:6px 0}.price s{color:#9c9f97;font-size:16px;font-weight:400;margin-right:8px}.tag{display:inline-block;background:#f20d22;color:#fff;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}ul{margin:10px 0 0;padding-left:18px;color:#c9cbc4}li{margin:4px 0}button{width:100%;background:#f20d22;color:#fff;border:0;border-radius:12px;padding:16px;font-size:17px;font-weight:800;cursor:pointer}button:disabled{opacity:.5}.mail{color:#ffd54a;font-weight:700}.done{display:none;background:#171814;border:1px solid #ffd54a;border-radius:16px;padding:22px}.foot{margin-top:28px;font-size:12px;color:#9c9f97}.foot a{color:#9c9f97}</style>
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script></head><body><main>
-<h1>OTT STANDARD <b style="color:#ff2a35">Pro</b></h1><div class="sub" id="sub"></div>
+<h1>OTT STANDARD <b style="color:#f20d22">Pro</b></h1><div class="sub" id="sub"></div>
 <div class="card" id="card"><span class="tag" id="tag"></span><div class="price" id="price"></div><div id="who"></div><ul id="feat"></ul></div>
 <button id="go" disabled>…</button>
 <div class="done" id="done"></div>
@@ -44,7 +44,7 @@ function celebrate() {
   const ctx = cv.getContext("2d");
   const fit = () => { cv.width = innerWidth; cv.height = innerHeight; };
   fit(); addEventListener("resize", fit);
-  const COLORS = ["#ff2a35", "#ffd54a", "#2fd4a0", "#8b7bff", "#ff8a65", "#4fc3f7", "#fff"];
+  const COLORS = ["#f20d22", "#ffd54a", "#2fd4a0", "#8b7bff", "#ff8a65", "#4fc3f7", "#fff"];
   const parts = [];
   const burst = (x, y, n) => { for (let i = 0; i < n; i++) { const a = Math.random() * Math.PI * 2, v = 4 + Math.random() * 7;
     parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 3, w: 5 + Math.random() * 6, h: 8 + Math.random() * 8,
