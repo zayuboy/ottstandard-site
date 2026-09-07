@@ -38,7 +38,7 @@
   });
   document.querySelectorAll('[data-copy-email]').forEach(button => button.addEventListener('click',async()=>{
     const status=button.parentElement.querySelector('.copy-status');
-    try { await navigator.clipboard.writeText('info@ottstandard.com'); status.textContent='이메일 주소를 복사했습니다.'; }
+    try { await navigator.clipboard.writeText('info@ottstandard.com'); status.textContent='이메일 주소를 복사했습니다. 메일의 받는 사람 칸에 붙여 넣어 주세요.'; }
     catch(e) {status.textContent='주소를 직접 선택해 복사하세요: info@ottstandard.com';}
   }));
   route(true);
