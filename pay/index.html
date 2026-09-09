@@ -1,28 +1,38 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Pro 시작하기 · OTT STANDARD</title>
-<style>body{margin:0;background:#0f100e;color:#e9e9ef;font:15px/1.7 -apple-system,"Apple SD Gothic Neo","Noto Sans KR","Hiragino Sans",sans-serif}main{max-width:520px;margin:0 auto;padding:48px 20px 80px;text-align:center}h1{font-size:26px;margin:0 0 6px}.sub{color:#9c9f97;font-size:13px}.card{background:#171814;border:1px solid #31342d;border-radius:16px;padding:22px 20px;margin:26px 0;text-align:left}.price{font-size:28px;font-weight:800;margin:6px 0}.price s{color:#9c9f97;font-size:16px;font-weight:400;margin-right:8px}.tag{display:inline-block;background:#f20d22;color:#fff;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}ul{margin:10px 0 0;padding-left:18px;color:#c9cbc4}li{margin:4px 0}button{width:100%;background:#f20d22;color:#fff;border:0;border-radius:12px;padding:16px;font-size:17px;font-weight:800;cursor:pointer}button:disabled{opacity:.5}.mail{color:#ffd54a;font-weight:700}.done{display:none;background:#171814;border:1px solid #ffd54a;border-radius:16px;padding:22px}.foot{margin-top:28px;font-size:12px;color:#9c9f97}.foot a{color:#9c9f97}</style>
+<style>body{margin:0;background:#0f100e;color:#e9e9ef;font:15px/1.7 -apple-system,"Apple SD Gothic Neo","Noto Sans KR","Hiragino Sans",sans-serif}main{max-width:520px;margin:0 auto;padding:48px 20px 80px;text-align:center}h1{font-size:26px;margin:0 0 6px}.sub{color:#9c9f97;font-size:13px}.card{background:#171814;border:1px solid #31342d;border-radius:16px;padding:22px 20px;margin:26px 0;text-align:left}.price{font-size:28px;font-weight:800;margin:6px 0}.price s{color:#9c9f97;font-size:16px;font-weight:400;margin-right:8px}.tag{display:inline-block;background:#f20d22;color:#fff;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}ul{margin:10px 0 0;padding-left:18px;color:#c9cbc4}li{margin:4px 0}button{width:100%;background:#f20d22;color:#fff;border:0;border-radius:12px;padding:16px;font-size:17px;font-weight:800;cursor:pointer}button:disabled{opacity:.5}.mail{color:#ffd54a;font-weight:700}.done{display:none;background:#171814;border:1px solid #ffd54a;border-radius:16px;padding:22px}.foot{margin-top:28px;font-size:12px;color:#9c9f97}.foot a{color:#9c9f97}:root{--brand:#f20d22}*{box-sizing:border-box}[hidden]{display:none!important}body{overflow-wrap:anywhere}main{max-width:560px}a,a:visited{color:var(--brand);text-underline-offset:4px}a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:4px}.action,.action:visited{display:block;padding:14px 18px;border-radius:12px;background:var(--brand);color:#fff;text-align:center;text-decoration:none;font-weight:700}.foot a,.foot a:visited{color:#d2d3d6}.page-nav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-bottom:24px}.note{font-size:14px;color:#c9cbc4}.status{padding:14px;border:1px solid var(--brand);border-radius:10px;text-align:left}button{font:inherit;font-weight:700}h2{font-size:20px}.mail{color:#e9e9ef}.card ol{padding-left:24px}.foot p{margin:14px 0}
+</style>
+
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script></head><body><main>
-<h1>OTT STANDARD <b style="color:#f20d22">Pro</b></h1><div class="sub" id="sub"></div>
+<nav class="page-nav" aria-label="페이지 이동"><a href="/" id="home-link">홈으로</a><a href="/pricing/" id="pricing-link">요금제 보기</a></nav><h1>OTT STANDARD <b style="color:#f20d22">Pro</b></h1><div class="sub" id="sub"></div>
 <div class="card" id="card"><span class="tag" id="tag"></span><div class="price" id="price"></div><div id="who"></div><ul id="feat"></ul></div>
-<button id="go" disabled>무료 체험 시작하기</button>
+<p class="note" id="reference-prices">안내 요금: 한국 월 4,900원 · 일본 월 490엔. 첫 30일 무료 체험 후 매월 자동 갱신됩니다.</p>
+<p class="note" id="price-preview" role="status" aria-live="polite">결제 예상 금액을 확인하고 있습니다.</p>
+<p class="note" id="billing-note">최종 통화·세금·청구 금액과 체험 적용 여부는 Paddle 결제창에서 확인해 주세요. 다음 결제일 전에 영수증의 구독 관리 링크에서 해지할 수 있습니다.</p>
+<p class="status" id="checkout-status" role="alert" hidden></p>
+<button id="go" disabled hidden>무료 체험 시작하기</button>
+<a class="action" id="install-action" href="#account-guide">설치하고 로그인하기</a>
+
 <section class="card" id="account-guide" aria-labelledby="account-guide-title">
-<h2 id="account-guide-title">구독할 계정을 먼저 연결해 주세요</h2>
-<p id="account-guide-copy">Pro를 사용할 계정과 구독을 연결하기 위해 확장 프로그램에서 이 페이지를 열어 주세요.</p>
-<ol id="account-guide-steps"><li>Chrome 웹스토어에서 OTT STANDARD를 설치해 주세요.</li><li>확장 프로그램의 설정 → 계정에서 로그인해 주세요.</li><li>계정 화면에서 Pro 구독을 열고 표시된 이메일과 결제 조건을 확인해 주세요.</li></ol>
-<p><a id="store-link" href="https://chromewebstore.google.com/detail/ott-standard/icmfmecbpoibeknbmnomaofgomdoaflo?authuser=0&amp;hl=ko" target="_blank" rel="noopener noreferrer">Chrome 웹스토어에서 설치하기 ↗</a></p>
+<h2 id="account-guide-title">OTT STANDARD에서 로그인한 뒤 시작해 주세요</h2>
+<p id="account-guide-copy">Pro 기능을 사용할 계정을 확인하기 위해, 확장 프로그램에서 로그인한 뒤 이 결제 페이지를 열어 주세요.</p>
+<ol id="account-guide-steps"><li>Chrome 웹스토어에서 OTT STANDARD를 설치해 주세요.</li><li>OTT STANDARD 확장 프로그램에서 로그인해 주세요.</li><li>로그인한 확장 프로그램에서 이 결제 페이지를 열고, 표시된 이메일과 결제 조건을 확인해 주세요.</li></ol>
+<p><a class="action" id="store-link" href="https://chromewebstore.google.com/detail/ott-standard/icmfmecbpoibeknbmnomaofgomdoaflo?authuser=0&amp;hl=ko" target="_blank" rel="noopener noreferrer">Chrome 웹스토어에서 설치하기 ↗</a></p>
 <p><a id="start-link" href="/start/">설치·시작 안내</a> · <a id="support-link" href="/support/">도움말·문의</a></p>
 </section>
-<noscript><p>구독 신청에는 JavaScript가 필요합니다. Chrome에서 JavaScript를 허용한 뒤 확장 프로그램의 설정 → 계정에서 다시 열어 주세요.</p></noscript>
+<noscript><p>구독 신청에는 JavaScript가 필요합니다. Chrome에서 JavaScript를 허용한 뒤 로그인한 OTT STANDARD 확장 프로그램에서 다시 열어 주세요.</p></noscript>
 <div class="done" id="done"></div>
-<div class="foot"><a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a> · <a href="/refund/">Refund</a> · Payments by Paddle · <a href="mailto:info@ottstandard.com">info@ottstandard.com</a></div>
+<section class="card" aria-labelledby="product-title"><h2 id="product-title">OTT STANDARD Pro 안내</h2><p id="product-copy">Netflix 시청 중 자막을 읽고 문장·단어·대본을 저장해 복습하는 Chrome 학습 확장 프로그램입니다. Pro는 학습 기능 구독이며 Netflix 이용권은 포함하지 않습니다. 영상 서비스에는 본인의 계정과 해당 서비스의 이용 조건이 적용됩니다.</p><p id="original-copy">모의시험 문제와 이야기 학습 콘텐츠는 직접 제작한 오리지널 자료입니다. 공식 시험 문제나 인증을 제공하지 않으며 합격을 보장하지 않습니다.</p></section>
+<div class="foot"><p>OTT STANDARD · WONJACK Co., Ltd.<br>CEO: Wonjang Cho · Business Registration No. 528-81-03580<br>3F, 46-14, World Cup-ro 11-gil, Mapo-gu, Seoul, Republic of Korea</p>
+<a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a> · <a href="/refund/">Refund</a> · Payments by Paddle · <a href="mailto:info@ottstandard.com">info@ottstandard.com</a></div>
 </main><script>
 // ▼ Paddle 설정 — 라이브 운영 중. 샌드박스로 되돌리려면 ~/paddle-keys.txt 의 상단(Sandbox) 값으로 교체.
 const ENV = "live";
 const TOKEN = "live_4af747ccd05c7a3a6c7153f92ad";
 const PRICE = "pri_01m1tqncs4axdx0r9addkxgxy3";
 const ja = (navigator.language || "").toLowerCase().startsWith("ja");
-const T = ja ? { sub: "30日間無料トライアル · 翌月から自動更新 · いつでも解約可", tag: "Pro 月額プラン", price: "月 ¥490", who: "アカウント: ", feat: ["全スクリプト · 単語帳 · チャレンジ · カレンダー", "模擬試験(JLPT · JPT · TOPIK) · スコア分析", "リピート再生 · シーン表示 · 単語保存"], go: "無料トライアルを始める", need: "拡張機能の設定 → アカウント から開いてください", doneTitle: "おめでとうございます！", done: "登録完了！拡張機能に戻ると Pro が有効になります。<br>このページは閉じて構いません。" }
-  : { sub: "첫 30일 무료 체험 · 다음 달부터 자동 갱신 · 언제든 취소", tag: "Pro 월 구독", price: "월 4,900원", who: "계정: ", feat: ["전체 대본 · 단어장 · 도전 · 캘린더", "모의시험(JLPT · JPT · TOPIK) · 점수 분석", "반복 듣기 · 장면 보기 · 단어 저장"], go: "무료 체험 시작하기", need: "확장 프로그램 설정 → 계정 에서 열어 주세요", doneTitle: "축하합니다!", done: "등록 완료! 확장 프로그램으로 돌아가면 Pro가 켜집니다.<br>이 페이지는 닫아도 됩니다." };
+const T = ja ? { sub: "30日間無料トライアル · 翌月から自動更新 · いつでも解約可", tag: "Pro 月額プラン", price: "月 ¥490", who: "アカウント: ", feat: ["全スクリプト · 単語帳 · チャレンジ · カレンダー", "模擬試験(JLPT · JPT · TOPIK) · スコア分析", "リピート再生 · シーン表示 · 単語保存"], go: "無料トライアルを始める", need: "OTT STANDARD にログインしてからこのページを開いてください", doneTitle: "おめでとうございます！", done: "登録完了！拡張機能に戻ると Pro が有効になります。<br>このページは閉じて構いません。" }
+  : { sub: "첫 30일 무료 체험 · 다음 달부터 자동 갱신 · 언제든 취소", tag: "Pro 월 구독", price: "월 4,900원", who: "계정: ", feat: ["전체 대본 · 단어장 · 도전 · 캘린더", "모의시험(JLPT · JPT · TOPIK) · 점수 분석", "반복 듣기 · 장면 보기 · 단어 저장"], go: "무료 체험 시작하기", need: "OTT STANDARD에서 로그인한 뒤 이 페이지를 열어 주세요", doneTitle: "축하합니다!", done: "등록 완료! 확장 프로그램으로 돌아가면 Pro가 켜집니다.<br>이 페이지는 닫아도 됩니다." };
 const $ = (id) => document.getElementById(id);
 $("sub").textContent = T.sub; $("tag").textContent = T.tag; $("price").innerHTML = T.price;
 $("feat").innerHTML = T.feat.map((f) => "<li>" + f + "</li>").join("");
@@ -30,32 +40,89 @@ $("feat").innerHTML = T.feat.map((f) => "<li>" + f + "</li>").join("");
 const email = (new URLSearchParams(location.hash.slice(1)).get("email") || "").trim().toLowerCase();
 $("who").innerHTML = email ? T.who + '<span class="mail">' + email.replace(/[<>&]/g, "") + "</span>" : '<span class="mail">' + T.need + "</span>";
 const go = $("go"); go.textContent = T.go;
-$("account-guide").hidden = Boolean(email);
+go.hidden = !email; $("install-action").hidden = Boolean(email); $("account-guide").hidden = Boolean(email);
 if (ja) {
-  $("account-guide-title").textContent = "購読するアカウントを先に連携してください";
-  $("account-guide-copy").textContent = "Pro を利用するアカウントと購読を連携するため、拡張機能からこのページを開いてください。";
-  $("account-guide-steps").innerHTML = "<li>Chrome ウェブストアで OTT STANDARD をインストールしてください。</li><li>拡張機能の設定 → アカウントからログインしてください。</li><li>アカウント画面から Pro の購読を開き、メールアドレスと決済条件を確認してください。</li>";
+  document.documentElement.lang = "ja";
+  $("home-link").textContent = "ホームへ";
+  $("pricing-link").textContent = "料金プラン";
+  $("install-action").textContent = "インストールしてログイン";
+  $("reference-prices").textContent = "案内料金: 韓国 月4,900ウォン・日本 月490円。初回30日間の無料体験後、毎月自動更新されます。";
+  $("billing-note").textContent = "最終的な通貨・税金・請求額と無料体験の適用は Paddle 決済画面でご確認ください。次回請求日前に領収書の購読管理リンクから解約できます。";
+  $("product-title").textContent = "OTT STANDARD Pro について";
+  $("product-copy").textContent = "Netflix を視聴しながら字幕を読み、文・単語・台本を保存して復習する Chrome 学習拡張機能です。Pro は学習機能の購読であり、Netflix の利用権は含みません。動画サービスにはご自身のアカウントと利用条件が適用されます。";
+  $("original-copy").textContent = "模擬試験問題と物語教材は独自に制作したオリジナル資料です。公式試験問題や認定を提供するものではなく、合格を保証しません。";
+
+  $("account-guide-title").textContent = "OTT STANDARD にログインしてから始めてください";
+  $("account-guide-copy").textContent = "Pro を利用するアカウントを確認するため、拡張機能にログインしてから、この決済ページを開いてください。";
+  $("account-guide-steps").innerHTML = "<li>Chrome ウェブストアで OTT STANDARD をインストールしてください。</li><li>OTT STANDARD 拡張機能にログインしてください。</li><li>ログインした拡張機能からこの決済ページを開き、表示されたメールアドレスと決済条件を確認してください。</li>";
   $("store-link").textContent = "Chrome ウェブストアでインストール ↗";
   $("start-link").textContent = "インストール・開始ガイド";
   $("support-link").textContent = "お問い合わせ";
 }
-if (email && !window.Paddle) {
-  $("who").textContent = ja ? "決済画面を読み込めませんでした。通信環境を確認し、拡張機能から開き直してください。" : "결제 화면을 불러오지 못했습니다. 인터넷 연결을 확인하고 확장 프로그램에서 다시 열어 주세요.";
-  $("account-guide").hidden = false;
+// A preview uses the visitor location, not the browser language, for currency.
+$("price").textContent = ja ? "料金のご案内" : "요금 안내";
+const say = (ko, jp) => ja ? jp : ko;
+let verifiedPrice = false;
+let opening = false;
+let openTimer;
+function showError(message) {
+  opening = false;
+  clearTimeout(openTimer);
+  $("checkout-status").textContent = message;
+  $("checkout-status").hidden = false;
+  go.disabled = !verifiedPrice;
 }
-if (email && window.Paddle) {
-  if (ENV === "sandbox") Paddle.Environment.set("sandbox");
-  Paddle.Initialize({ token: TOKEN, eventCallback: (ev) => {
-    if (ev.name === "checkout.completed") {
-      $("card").style.display = "none"; go.style.display = "none"; $("done").style.display = "block"; $("done").innerHTML = '<div style="font-size:24px;font-weight:800;color:#ffd54a;margin-bottom:10px">\ud83c\udf89 ' + T.doneTitle + "</div>" + T.done;
-      celebrate(); // 🎉 폭죽
-      // 확장 안 결제 팝업(iframe)으로 열린 경우: 부모에게 완료를 알려 팝업을 닫고 Pro 상태를 재확인하게 한다
-      try { if (window.parent !== window) window.parent.postMessage({ njpPay: "completed" }, "*"); } catch (e) {}
+const unavailable = () => say("결제 정보를 확인하지 못했습니다. 잠시 후 새로고침하거나 아래 이메일로 문의해 주세요.", "決済情報を確認できませんでした。しばらくして再読み込みするか、下記メールまでお問い合わせください。");
+function onCheckoutEvent(ev) {
+  if (["checkout.error", "checkout.payment.error", "checkout.payment.failed"].includes(ev.name)) {
+    showError(say("결제를 진행하지 못했습니다. 결제창 안내를 확인해 주세요. 청구 여부가 불확실하면 다시 결제하지 말고 아래 이메일로 문의해 주세요.", "決済を続行できませんでした。決済画面をご確認ください。請求状況が不明な場合は再決済せず、下記メールまでお問い合わせください。"));
+  }
+  if (["checkout.loaded", "checkout.closed", "checkout.completed"].includes(ev.name)) {
+    clearTimeout(openTimer); opening = false; go.disabled = !verifiedPrice;
+  }
+  if (ev.name === "checkout.completed") {
+    $("checkout-status").hidden = true;
+    $("card").style.display = "none"; go.style.display = "none"; $("done").style.display = "block";
+    $("done").innerHTML = '<h2>' + T.doneTitle + '</h2>' + T.done;
+    celebrate();
+    try { if (window.parent !== window) window.parent.postMessage({ njpPay: "completed" }, "*"); } catch (e) {}
+  }
+}
+async function prepareCheckout() {
+  $("price-preview").textContent = say("Paddle에서 결제 예상 금액을 확인하고 있습니다.", "Paddle で決済予定額を確認しています。");
+  let previewTimer;
+  try {
+    if (!window.Paddle) throw new Error("sdk unavailable");
+    if (ENV === "sandbox") Paddle.Environment.set("sandbox");
+    Paddle.Initialize({ token: TOKEN, eventCallback: onCheckoutEvent });
+    const result = await Promise.race([
+      Paddle.PricePreview({ items: [{ priceId: PRICE, quantity: 1 }] }),
+      new Promise((_, reject) => { previewTimer = setTimeout(() => reject(new Error("preview timeout")), 12000); })
+    ]);
+    const line = result.data?.details?.lineItems?.find(item => item.price?.id === PRICE);
+    const cycle = line?.price?.billingCycle;
+    const trial = line?.price?.trialPeriod;
+    if (!line?.formattedTotals?.total || cycle?.interval !== "month" || cycle.frequency !== 1 || trial?.interval !== "day" || trial.frequency !== 30) {
+      throw new Error("plan could not be confirmed");
     }
-  } });
-  const open = () => Paddle.Checkout.open({ items: [{ priceId: PRICE, quantity: 1 }], customer: { email }, customData: { email, app: "netflixmiru" }, settings: { displayMode: "overlay", locale: ja ? "ja" : "ko", showAddDiscounts: false, allowLogout: false } });
-  go.disabled = false; go.addEventListener("click", open); open();
+    $("price").textContent = line.formattedTotals.total + say(" / 월 (예상)", " / 月（予定）");
+    $("price-preview").textContent = say("Paddle 조회: 30일 체험 · 매월 결제. 현재 접속 위치 기준 예상 금액이며 결제창 주소에 따라 세금·통화·금액이 달라질 수 있습니다.", "Paddle 確認: 30日間体験・月額払い。現在地に基づく予定額で、決済時の住所により税金・通貨・金額が変わる場合があります。");
+    verifiedPrice = true; go.disabled = !email;
+  } catch (e) {
+    $("price-preview").textContent = say("예상 금액과 체험 조건을 확인하지 못했습니다. 위 안내 요금은 실제 청구 금액을 조회한 결과가 아닙니다.", "予定額と体験条件を確認できませんでした。上記の案内料金は実際の請求額の照会結果ではありません。");
+    showError(unavailable());
+  } finally { clearTimeout(previewTimer); }
 }
+go.addEventListener("click", () => {
+  if (!email || !verifiedPrice || opening) return;
+  opening = true; go.disabled = true; $("checkout-status").hidden = true;
+  openTimer = setTimeout(() => showError(unavailable()), 20000);
+  try {
+    const pending = Paddle.Checkout.open({ items: [{ priceId: PRICE, quantity: 1 }], customer: { email }, customData: { email, app: "netflixmiru" }, settings: { displayMode: "overlay", locale: ja ? "ja" : "ko", showAddDiscounts: false, allowLogout: false } });
+    if (pending && typeof pending.catch === "function") pending.catch(() => showError(unavailable()));
+  } catch (e) { showError(unavailable()); }
+});
+prepareCheckout();
 
 // ===== 폭죽 연출 — 결제 완료 순간 화면 가득 콘페티 =====
 function celebrate() {
