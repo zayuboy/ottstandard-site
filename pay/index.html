@@ -4,7 +4,15 @@
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script></head><body><main>
 <h1>OTT STANDARD <b style="color:#f20d22">Pro</b></h1><div class="sub" id="sub"></div>
 <div class="card" id="card"><span class="tag" id="tag"></span><div class="price" id="price"></div><div id="who"></div><ul id="feat"></ul></div>
-<button id="go" disabled>…</button>
+<button id="go" disabled>무료 체험 시작하기</button>
+<section class="card" id="account-guide" aria-labelledby="account-guide-title">
+<h2 id="account-guide-title">구독할 계정을 먼저 연결해 주세요</h2>
+<p id="account-guide-copy">Pro를 사용할 계정과 구독을 연결하기 위해 확장 프로그램에서 이 페이지를 열어 주세요.</p>
+<ol id="account-guide-steps"><li>Chrome 웹스토어에서 OTT STANDARD를 설치해 주세요.</li><li>확장 프로그램의 설정 → 계정에서 로그인해 주세요.</li><li>계정 화면에서 Pro 구독을 열고 표시된 이메일과 결제 조건을 확인해 주세요.</li></ol>
+<p><a id="store-link" href="https://chromewebstore.google.com/detail/ott-standard/icmfmecbpoibeknbmnomaofgomdoaflo?authuser=0&amp;hl=ko" target="_blank" rel="noopener noreferrer">Chrome 웹스토어에서 설치하기 ↗</a></p>
+<p><a id="start-link" href="/start/">설치·시작 안내</a> · <a id="support-link" href="/support/">도움말·문의</a></p>
+</section>
+<noscript><p>구독 신청에는 JavaScript가 필요합니다. Chrome에서 JavaScript를 허용한 뒤 확장 프로그램의 설정 → 계정에서 다시 열어 주세요.</p></noscript>
 <div class="done" id="done"></div>
 <div class="foot"><a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a> · <a href="/refund/">Refund</a> · Payments by Paddle · <a href="mailto:info@ottstandard.com">info@ottstandard.com</a></div>
 </main><script>
@@ -14,7 +22,7 @@ const TOKEN = "live_4af747ccd05c7a3a6c7153f92ad";
 const PRICE = "pri_01m1tqncs4axdx0r9addkxgxy3";
 const ja = (navigator.language || "").toLowerCase().startsWith("ja");
 const T = ja ? { sub: "30日間無料トライアル · 翌月から自動更新 · いつでも解約可", tag: "リリース記念 50% OFF", price: "<s>月 ¥990</s>月 ¥490", who: "アカウント: ", feat: ["全スクリプト · 単語帳 · チャレンジ · カレンダー", "模擬試験(JLPT · JPT · TOPIK) · スコア分析", "リピート再生 · シーン表示 · 単語保存"], go: "無料トライアルを始める", need: "拡張機能の設定 → アカウント から開いてください", doneTitle: "おめでとうございます！", done: "登録完了！拡張機能に戻ると Pro が有効になります。<br>このページは閉じて構いません。" }
-  : { sub: "첫 30일 무료 체험 · 다음 달부터 자동 갱신 · 언제든 취소", tag: "런칭 기념 50% 할인", price: "<s>월 9,900원</s>월 4,900원", who: "계정: ", feat: ["전체 대본 · 단어장 · 도전 · 캘린더", "모의시험(JLPT · JPT · TOPIK) · 점수 분석", "반복 듣기 · 장면 보기 · 단어 저장"], go: "무료 체험 시작하기", need: "확장 프로그램 설정 → 계정 에서 열어 주세요", doneTitle: "축하합니다!", done: "등록 완료! 확장 프로그램으로 돌아가면 Pro가 켜집니다.<br>이 페이지는 닫아도 됩니다." };
+  : { sub: "첫 30일 무료 체험 · 다음 달부터 자동 갱신 · 언제든 취소", tag: "Pro 월 구독", price: "월 4,900원", who: "계정: ", feat: ["전체 대본 · 단어장 · 도전 · 캘린더", "모의시험(JLPT · JPT · TOPIK) · 점수 분석", "반복 듣기 · 장면 보기 · 단어 저장"], go: "무료 체험 시작하기", need: "확장 프로그램 설정 → 계정 에서 열어 주세요", doneTitle: "축하합니다!", done: "등록 완료! 확장 프로그램으로 돌아가면 Pro가 켜집니다.<br>이 페이지는 닫아도 됩니다." };
 const $ = (id) => document.getElementById(id);
 $("sub").textContent = T.sub; $("tag").textContent = T.tag; $("price").innerHTML = T.price;
 $("feat").innerHTML = T.feat.map((f) => "<li>" + f + "</li>").join("");
@@ -22,6 +30,19 @@ $("feat").innerHTML = T.feat.map((f) => "<li>" + f + "</li>").join("");
 const email = (new URLSearchParams(location.hash.slice(1)).get("email") || "").trim().toLowerCase();
 $("who").innerHTML = email ? T.who + '<span class="mail">' + email.replace(/[<>&]/g, "") + "</span>" : '<span class="mail">' + T.need + "</span>";
 const go = $("go"); go.textContent = T.go;
+$("account-guide").hidden = Boolean(email);
+if (ja) {
+  $("account-guide-title").textContent = "購読するアカウントを先に連携してください";
+  $("account-guide-copy").textContent = "Pro を利用するアカウントと購読を連携するため、拡張機能からこのページを開いてください。";
+  $("account-guide-steps").innerHTML = "<li>Chrome ウェブストアで OTT STANDARD をインストールしてください。</li><li>拡張機能の設定 → アカウントからログインしてください。</li><li>アカウント画面から Pro の購読を開き、メールアドレスと決済条件を確認してください。</li>";
+  $("store-link").textContent = "Chrome ウェブストアでインストール ↗";
+  $("start-link").textContent = "インストール・開始ガイド";
+  $("support-link").textContent = "お問い合わせ";
+}
+if (email && !window.Paddle) {
+  $("who").textContent = ja ? "決済画面を読み込めませんでした。通信環境を確認し、拡張機能から開き直してください。" : "결제 화면을 불러오지 못했습니다. 인터넷 연결을 확인하고 확장 프로그램에서 다시 열어 주세요.";
+  $("account-guide").hidden = false;
+}
 if (email && window.Paddle) {
   if (ENV === "sandbox") Paddle.Environment.set("sandbox");
   Paddle.Initialize({ token: TOKEN, eventCallback: (ev) => {
