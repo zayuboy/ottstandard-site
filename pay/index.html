@@ -21,7 +21,7 @@ const ENV = "live";
 const TOKEN = "live_4af747ccd05c7a3a6c7153f92ad";
 const PRICE = "pri_01m1tqncs4axdx0r9addkxgxy3";
 const ja = (navigator.language || "").toLowerCase().startsWith("ja");
-const T = ja ? { sub: "30日間無料トライアル · 翌月から自動更新 · いつでも解約可", tag: "リリース記念 50% OFF", price: "<s>月 ¥990</s>月 ¥490", who: "アカウント: ", feat: ["全スクリプト · 単語帳 · チャレンジ · カレンダー", "模擬試験(JLPT · JPT · TOPIK) · スコア分析", "リピート再生 · シーン表示 · 単語保存"], go: "無料トライアルを始める", need: "拡張機能の設定 → アカウント から開いてください", doneTitle: "おめでとうございます！", done: "登録完了！拡張機能に戻ると Pro が有効になります。<br>このページは閉じて構いません。" }
+const T = ja ? { sub: "30日間無料トライアル · 翌月から自動更新 · いつでも解約可", tag: "Pro 月額プラン", price: "月 ¥490", who: "アカウント: ", feat: ["全スクリプト · 単語帳 · チャレンジ · カレンダー", "模擬試験(JLPT · JPT · TOPIK) · スコア分析", "リピート再生 · シーン表示 · 単語保存"], go: "無料トライアルを始める", need: "拡張機能の設定 → アカウント から開いてください", doneTitle: "おめでとうございます！", done: "登録完了！拡張機能に戻ると Pro が有効になります。<br>このページは閉じて構いません。" }
   : { sub: "첫 30일 무료 체험 · 다음 달부터 자동 갱신 · 언제든 취소", tag: "Pro 월 구독", price: "월 4,900원", who: "계정: ", feat: ["전체 대본 · 단어장 · 도전 · 캘린더", "모의시험(JLPT · JPT · TOPIK) · 점수 분석", "반복 듣기 · 장면 보기 · 단어 저장"], go: "무료 체험 시작하기", need: "확장 프로그램 설정 → 계정 에서 열어 주세요", doneTitle: "축하합니다!", done: "등록 완료! 확장 프로그램으로 돌아가면 Pro가 켜집니다.<br>이 페이지는 닫아도 됩니다." };
 const $ = (id) => document.getElementById(id);
 $("sub").textContent = T.sub; $("tag").textContent = T.tag; $("price").innerHTML = T.price;
