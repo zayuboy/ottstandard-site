@@ -22,3 +22,20 @@
 @media(max-width:1000px){.topbar-inner{flex-wrap:wrap;justify-content:space-between;gap:5px;padding-top:13px;padding-bottom:10px}.nav{gap:16px}.brand{font-size:14px}.home-hero-top{gap:35px}.portal{padding:25px 22px}.split-panel{gap:30px}.quiet-panel{padding:30px}}
 @media(max-width:760px){.topbar-inner{flex-direction:column;align-items:flex-start;gap:10px}.nav{width:100%;gap:20px;overflow-x:auto;justify-content:flex-start;padding-bottom:7px;font-size:13px;white-space:nowrap}.nav a{padding-block:6px}.nav .home-link{padding:6px 12px}.nav .nav-start{padding:7px 13px}.home-hero{padding-top:43px}.home-hero-top{grid-template-columns:1fr;gap:25px;margin-bottom:32px}.home-hero .intro{font-size:17px}.home-hero h1{font-size:43px}.home-stats{margin-top:25px}.home-stats div{padding-inline:14px}.home-stats b{font-size:25px}.home-stats span{font-size:12px}.portal-grid{grid-template-columns:1fr}.portal{min-height:0}.portal .serial{margin-bottom:15px}.portal .portal-link{padding-top:20px}.section-heading-row{align-items:flex-start;flex-direction:column;gap:20px}.split-panel{grid-template-columns:1fr}.page-navigation-inner{align-items:flex-start;flex-direction:column}.page-navigation .actions{width:100%}.page-navigation .button{flex:1;white-space:nowrap}.footer-menu{grid-template-columns:1fr 1fr;gap:30px}.footer-menu>div:first-child{grid-column:1/-1}.plans{grid-template-columns:1fr}.support-layout{grid-template-columns:1fr}.page-title{padding-block:30px 35px}.page-title p{font-size:16px}.breadcrumb{padding-top:24px}.visual-caption{font-size:11px;display:block}.visual-caption span+span{display:none}.plan{padding:29px}.price-table td{min-width:80px}.start-steps>li{grid-template-columns:35px 1fr;gap:14px}.start-steps h2{font-size:22px}.policy{padding-top:25px}.policy h1{font-size:26px}.policy p,.policy li{font-size:15px}.policy .lang button{padding:9px 16px}.policy table{min-width:600px}.page-navigation{margin-top:30px;padding-block:30px}.home-hero .eyebrow{font-size:12px}.quiet-panel h2{font-size:27px}.quote-short{font-size:22px!important}}
 @media(prefers-reduced-motion:reduce){.site-page{animation:none}.portal{transition:none}}
+
+/* Shared red introductory labels: 1.5 times the original 13px size. */
+.eyebrow,
+.section-number,
+.portal .serial,
+.feature .tagline,
+.routine-panel small,
+.plan-head span {
+  font-size:19.5px !important;
+  line-height:1.6;
+}
+@media(max-width:760px) {
+  .home-hero .eyebrow { font-size:18px !important; }
+}
+@media(max-width:640px) {
+  .eyebrow { font-size:18px !important; }
+}
