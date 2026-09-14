@@ -62,7 +62,7 @@ const go = $("go"); go.textContent = T.go;
 go.hidden = !email; go.disabled = !email;
 $("install-action").hidden = Boolean(email); $("account-guide").hidden = Boolean(email);
 
-function showError(msg) { $("checkout-status").textContent = msg; $("checkout-status").hidden = false; go.disabled = !email; }
+function showError(msg) { const mn = document.querySelector("main"); if (mn) mn.style.display = ""; $("checkout-status").textContent = msg; $("checkout-status").hidden = false; go.disabled = !email; }
 const unavailable = () => say("결제를 진행하지 못했습니다. 잠시 후 다시 시도하거나 아래 이메일로 문의해 주세요.", "決済を続行できませんでした。しばらくして再度お試しいただくか、下記メールまでお問い合わせください。");
 
 function celebrateDone() {
@@ -116,9 +116,9 @@ go.addEventListener("click", () => { if (!go.disabled) startBilling(); });
 // 최초 방문(복귀 아님) + 이메일 있음 → 요금 안내(recap) 건너뛰고 바로 Toss 카드 등록창을 연다.
 //   requestBillingAuth가 프레임을 Toss 카드 페이지로 넘기므로, recap을 숨겨 깜빡임을 없앤다.
 if (email && !qs.get("authKey") && !qs.get("fail") && !qs.get("code")) {
-  ["card", "reference-prices", "billing-note", "install-action", "account-guide"].forEach((id) => { const el = $(id); if (el) el.style.display = "none"; });
-  go.textContent = say("카드 등록하기", "カード登録");   // 자동 열기 실패 시 눌러서 다시
-  $("sub").textContent = say("카드 등록창을 여는 중…", "カード登録画面を開いています…");
+  const mn = document.querySelector("main");
+  if (mn) mn.style.display = "none";   // 카드 등록창 뒤 배경(요금 안내·푸터 등) 숨김 — 실패 시 showError가 다시 보여줌
+  go.textContent = say("카드 등록하기", "カード登録");
   setTimeout(startBilling, 60);
 }
 
