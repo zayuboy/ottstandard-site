@@ -1,0 +1,27 @@
+# OTT STANDARD — Toss 정기결제 크론
+# Toss엔 자동 갱신이 없다. 이 워크플로우가 하루 1회 서버의 청구 엔드포인트를 때려
+# 만료된 구독을 billingKey로 결제·연장한다. 이게 없으면 아무도 갱신되지 않는다.
+#
+# 필요 설정(1회): 이 repo Settings → Secrets and variables → Actions →
+#   New repository secret 로 TOSS_CRON_SECRET 추가(서버 env의 TOSS_CRON_SECRET 와 같은 값).
+name: toss-billing
+
+on:
+  schedule:
+    - cron: "10 0 * * *"   # 매일 00:10 UTC = 09:10 KST
+  workflow_dispatch: {}     # 수동 실행 버튼(테스트용)
+
+jobs:
+  charge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Charge due subscriptions
+        env:
+          SECRET: ${{ secrets.TOSS_CRON_SECRET }}
+        run: |
+          if [ -z "$SECRET" ]; then echo "::error::TOSS_CRON_SECRET 미설정"; exit 1; fi
+          # -f: HTTP 4xx/5xx면 실패로 처리(크론 실패가 Actions에 빨갛게 뜨도록)
+          resp=$(curl -fsS -w "\n%{http_code}" -X POST \
+            "https://promvers.com/api/miru/toss/billing?app=netflixmiru" \
+            -H "x-cron-secret: $SECRET")
+          echo "$resp"
