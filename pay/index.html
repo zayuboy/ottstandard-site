@@ -96,8 +96,8 @@ function customerKeyFor(e) {
   if (/^[A-Za-z0-9._@=\-]{2,50}$/.test(e)) return e;
   return ("u_" + btoa(unescape(encodeURIComponent(e))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "")).slice(0, 50);
 }
-go.addEventListener("click", async () => {
-  if (!email || go.disabled) return;
+async function startBilling() {
+  if (!email) return;
   go.disabled = true; $("checkout-status").hidden = true;
   try {
     if (!window.TossPayments) throw new Error("sdk");
@@ -110,7 +110,17 @@ go.addEventListener("click", async () => {
       customerEmail: email,
     });
   } catch (e) { showError(unavailable()); }
-});
+}
+go.addEventListener("click", () => { if (!go.disabled) startBilling(); });
+
+// 최초 방문(복귀 아님) + 이메일 있음 → 요금 안내(recap) 건너뛰고 바로 Toss 카드 등록창을 연다.
+//   requestBillingAuth가 프레임을 Toss 카드 페이지로 넘기므로, recap을 숨겨 깜빡임을 없앤다.
+if (email && !qs.get("authKey") && !qs.get("fail") && !qs.get("code")) {
+  ["card", "reference-prices", "billing-note", "install-action", "account-guide"].forEach((id) => { const el = $(id); if (el) el.style.display = "none"; });
+  go.textContent = say("카드 등록하기", "カード登録");   // 자동 열기 실패 시 눌러서 다시
+  $("sub").textContent = say("카드 등록창을 여는 중…", "カード登録画面を開いています…");
+  setTimeout(startBilling, 60);
+}
 
 // ===== 폭죽 연출 — 결제 완료 순간 =====
 // 축하음: 오디오 파일 없이 Web Audio로 짧은 상승 팡파르 합성.
