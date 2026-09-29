@@ -40,3 +40,4 @@
   .eyebrow { font-size:18px !important; }
 }
 @media(max-width:640px){.home-stats{grid-template-columns:1fr;gap:0}.home-stats div{border-right:0;border-bottom:1px solid var(--line);padding:15px 0!important;justify-content:flex-start!important}.home-stats div:first-child{padding-top:0!important}.home-stats div:last-child{border-bottom:0;padding-bottom:0!important}}
+@media(max-width:640px){.home-hero .eyebrow .eb-dot{display:none}.home-hero .eyebrow .eb-a,.home-hero .eyebrow .eb-b{display:block}}
