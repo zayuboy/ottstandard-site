@@ -5,10 +5,10 @@
 <script src="https://js.tosspayments.com/v2/standard"></script></head><body><main>
 <nav class="page-nav" aria-label="페이지 이동"><a href="/" id="home-link">홈으로</a></nav><h1>OTT STANDARD <b style="color:#f20d22">Pro</b></h1><div class="sub" id="sub"></div>
 <div class="card" id="card"><span class="tag" id="tag"></span><div class="price" id="price"></div><div id="who"></div><ul id="feat"></ul></div>
-<p class="note" id="reference-prices">요금: 월 4,900원. 첫 30일 무료 체험 후 매월 자동 결제됩니다. 결제는 토스페이먼츠(국내 카드)로 진행됩니다.</p>
-<p class="note" id="billing-note">카드 등록 후 30일간 무료로 이용하고, 이후 매월 4,900원이 자동 청구됩니다. 다음 결제일 전 확장 프로그램에서 언제든 해지할 수 있습니다.</p>
+<p class="note" id="reference-prices">현재 베타 버전으로 요금·결제가 없습니다. 정식 출시 후 유료(월 구독)로 전환될 때 이 페이지에서 결제가 열립니다.</p>
+<p class="note" id="billing-note">베타 기간에는 결제·해지 절차가 없습니다. 정식 출시로 유료 전환 시 결제·해지 방법을 미리 안내합니다.</p>
 <p class="status" id="checkout-status" role="alert" hidden></p>
-<button id="go" disabled hidden>무료 체험 시작하기</button>
+<button id="go" disabled hidden>베타 기간 이용 중</button>
 <a class="action" id="install-action" href="#account-guide">설치하고 로그인하기</a>
 
 <section class="card" id="account-guide" aria-labelledby="account-guide-title">
@@ -22,8 +22,9 @@
 <div class="done" id="done"></div>
 <section class="card" aria-labelledby="product-title"><h2 id="product-title">OTT STANDARD Pro 안내</h2><p id="product-copy">Netflix 시청 중 자막을 읽고 문장·단어·대본을 저장해 복습하는 Chrome 학습 확장 프로그램입니다. Pro는 학습 기능 구독이며 Netflix 이용권은 포함하지 않습니다. 영상 서비스에는 본인의 계정과 해당 서비스의 이용 조건이 적용됩니다.</p><p id="original-copy">모의시험 문제와 이야기 학습 콘텐츠는 직접 제작한 오리지널 자료입니다. 공식 시험 문제나 인증을 제공하지 않으며 합격을 보장하지 않습니다.</p></section>
 <div class="foot"><p>OTT STANDARD · WONJACK Co., Ltd.<br>CEO: Wonjang Cho · Business Registration No. 528-81-03580<br>3F, 46-14, World Cup-ro 11-gil, Mapo-gu, Seoul, Republic of Korea</p>
-<a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a> · <a href="/refund/">Refund</a> · Payments by 토스페이먼츠 · <a href="mailto:info@ottstandard.com">info@ottstandard.com</a></div>
+<a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a> · <a href="mailto:info@ottstandard.com">info@ottstandard.com</a></div>
 </main><script>
+const BETA_NO_PAY = true; // 베타 기간: 결제 비활성화. 정식 출시 때 false로 바꾸면 결제 플로우가 다시 열린다.
 // ▼ Toss페이먼츠 설정 — 실제 키로 교체 필요. 테스트 키는 Toss 가입 즉시 발급(무료).
 //   CLIENT_KEY: 클라이언트 키(test_ck_.../live_ck_...) · 서버는 시크릿 키(TOSS_SECRET_KEY)를 쓴다.
 const CLIENT_KEY = "test_ck_6bJXmgo28e4zeknZGZOerLAnGKWx"; // 씨네픽(실제 상점) 테스트 클라이언트 키 — 라이브 전환 시 이 상점 live_ck_로 교체
@@ -31,18 +32,18 @@ const ISSUE_URL  = "https://promvers.com/api/miru/toss/issue"; // 서버: authKe
 const PRICE_KRW  = 4900;
 
 const ja = (navigator.language || "").toLowerCase().startsWith("ja");
-const T = ja ? { sub: "30日間無料トライアル · 翌月から自動更新 · いつでも解約可", tag: "Pro 月額プラン", price: "月 4,900ウォン", who: "アカウント: ", feat: ["全スクリプト · 単語帳 · チャレンジ · カレンダー", "模擬試験(JLPT · JPT · TOPIK) · スコア分析", "リピート再生 · シーン表示 · 単語保存"], go: "無料トライアルを始める", need: "OTT STANDARD にログインしてからこのページを開いてください", doneTitle: "おめでとうございます！", done: "登録完了！拡張機能に戻ると Pro が有効になります。<br>このページは閉じて構いません。" }
-  : { sub: "첫 30일 무료 체험 · 다음 달부터 자동 결제 · 언제든 취소", tag: "Pro 월 구독", price: "월 4,900원", who: "계정: ", feat: ["전체 대본 · 단어장 · 도전 · 캘린더", "모의시험(JLPT · JPT · TOPIK) · 점수 분석", "반복 듣기 · 장면 보기 · 단어 저장"], go: "무료 체험 시작하기", need: "OTT STANDARD에서 로그인한 뒤 이 페이지를 열어 주세요", doneTitle: "축하합니다!", done: "등록 완료! 확장 프로그램으로 돌아가면 Pro가 켜집니다.<br>이 페이지는 닫아도 됩니다." };
+const T = ja ? { sub: "ベータ版 · ベータ期間中は料金なし · 正式リリース後に有料へ移行予定", tag: "Pro 月額プラン", price: "月 4,900ウォン", who: "アカウント: ", feat: ["全スクリプト · 単語帳 · チャレンジ · カレンダー", "模擬試験(JLPT · JPT · TOPIK) · スコア分析", "リピート再生 · シーン表示 · 単語保存"], go: "ベータ期間ご利用中", need: "OTT STANDARD にログインしてからこのページを開いてください", doneTitle: "おめでとうございます！", done: "登録完了！拡張機能に戻ると Pro が有効になります。<br>このページは閉じて構いません。" }
+  : { sub: "베타 버전 · 베타 기간에는 요금 없음 · 정식 출시 후 유료 전환 예정", tag: "Pro 월 구독", price: "월 4,900원", who: "계정: ", feat: ["전체 대본 · 단어장 · 도전 · 캘린더", "모의시험(JLPT · JPT · TOPIK) · 점수 분석", "반복 듣기 · 장면 보기 · 단어 저장"], go: "베타 기간 이용 중", need: "OTT STANDARD에서 로그인한 뒤 이 페이지를 열어 주세요", doneTitle: "축하합니다!", done: "등록 완료! 확장 프로그램으로 돌아가면 Pro가 켜집니다.<br>이 페이지는 닫아도 됩니다." };
 const $ = (id) => document.getElementById(id);
 const say = (ko, jp) => ja ? jp : ko;
 $("sub").textContent = T.sub; $("tag").textContent = T.tag; $("price").textContent = T.price;
 $("feat").innerHTML = T.feat.map((f) => "<li>" + f + "</li>").join("");
 if (ja) {
   document.documentElement.lang = "ja";
-  $("home-link").textContent = "ホームへ"; $("pricing-link").textContent = "料金プラン";
+  $("home-link").textContent = "ホームへ";
   $("install-action").textContent = "インストールしてログイン";
-  $("reference-prices").textContent = "料金: 月4,900ウォン。初回30日間の無料体験後、毎月自動決済されます。決済はトスペイメンツ(韓国のカード)で行われます。";
-  $("billing-note").textContent = "カード登録後30日間は無料で利用でき、その後は毎月4,900ウォンが自動請求されます。次回請求日前に拡張機能からいつでも解約できます。";
+  $("reference-prices").textContent = "現在ベータ版のため料金・決済はありません。正式リリース後に有料（月額）へ移行する際、このページで決済が開きます。";
+  $("billing-note").textContent = "ベータ期間中は決済・解約の手続きはありません。正式リリースで有料へ移行する際、決済・解約方法を事前にご案内します。";
   $("product-title").textContent = "OTT STANDARD Pro について";
   $("product-copy").textContent = "Netflix を視聴しながら字幕を読み、文・単語・台本を保存して復習する Chrome 学習拡張機能です。Pro は学習機能の購読であり、Netflix の利用権は含みません。";
   $("original-copy").textContent = "模擬試験問題と物語教材は独自に制作したオリジナル資料です。公式試験問題や認定を提供するものではなく、合格を保証しません。";
@@ -61,6 +62,12 @@ $("who").innerHTML = email ? T.who + '<span class="mail">' + email.replace(/[<>&
 const go = $("go"); go.textContent = T.go;
 go.hidden = !email; go.disabled = !email;
 $("install-action").hidden = Boolean(email); $("account-guide").hidden = Boolean(email);
+if (BETA_NO_PAY) {
+  ["card","reference-prices","billing-note","checkout-status","go","install-action","account-guide","done"].forEach(function (id) { var el = $(id); if (el) el.style.display = "none"; });
+  var betaBox = document.createElement("section"); betaBox.className = "card"; betaBox.id = "beta-notice";
+  betaBox.innerHTML = "<h2>" + say("베타 버전 안내", "ベータ版のご案内") + "</h2><p>" + say("OTT STANDARD는 현재 베타 버전입니다. 베타 기간에는 결제·요금이 없으며, 정식 출시 후 유료로 전환될 때 이 페이지에서 결제가 열립니다.", "OTT STANDARD は現在ベータ版です。ベータ期間中は決済・料金がなく、正式リリース後に有料へ移行した際、このページで決済が開きます。") + "</p>";
+  var mnEl = document.querySelector("main"), anchorEl = $("card"); if (mnEl && anchorEl) mnEl.insertBefore(betaBox, anchorEl); else if (mnEl) mnEl.appendChild(betaBox);
+}
 
 function showError(msg) { const mn = document.querySelector("main"); if (mn) mn.style.display = ""; $("checkout-status").textContent = msg; $("checkout-status").hidden = false; go.disabled = !email; }
 const unavailable = () => say("결제를 진행하지 못했습니다. 잠시 후 다시 시도하거나 아래 이메일로 문의해 주세요.", "決済を続行できませんでした。しばらくして再度お試しいただくか、下記メールまでお問い合わせください。");
@@ -77,6 +84,7 @@ function celebrateDone() {
 //   성공: successUrl?customerKey=&authKey=  → 서버가 billingKey 발급(구독 시작)
 //   실패: failUrl?code=&message= 또는 ?fail=1
 (async function handleReturn() {
+  if (BETA_NO_PAY) return;
   const authKey = qs.get("authKey"), customerKey = qs.get("customerKey");
   if (qs.get("fail") || qs.get("code")) { showError((qs.get("message") || "") || unavailable()); return; }
   if (!authKey || !customerKey) return; // 최초 방문
@@ -97,6 +105,7 @@ function customerKeyFor(e) {
   return ("u_" + btoa(unescape(encodeURIComponent(e))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "")).slice(0, 50);
 }
 async function startBilling() {
+  if (BETA_NO_PAY) return;
   if (!email) return;
   go.disabled = true; $("checkout-status").hidden = true;
   try {
@@ -115,7 +124,7 @@ go.addEventListener("click", () => { if (!go.disabled) startBilling(); });
 
 // 최초 방문(복귀 아님) + 이메일 있음 → 요금 안내(recap) 건너뛰고 바로 Toss 카드 등록창을 연다.
 //   requestBillingAuth가 프레임을 Toss 카드 페이지로 넘기므로, recap을 숨겨 깜빡임을 없앤다.
-if (email && !qs.get("authKey") && !qs.get("fail") && !qs.get("code")) {
+if (!BETA_NO_PAY && email && !qs.get("authKey") && !qs.get("fail") && !qs.get("code")) {
   const mn = document.querySelector("main");
   if (mn) mn.style.display = "none";   // 카드 등록창 뒤 배경(요금 안내·푸터 등) 숨김 — 실패 시 showError가 다시 보여줌
   go.textContent = say("카드 등록하기", "カード登録");
