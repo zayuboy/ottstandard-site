@@ -50,3 +50,5 @@ html,body{top:0!important;position:static!important;min-height:0}
 .lang-switch button:hover{color:var(--ink)}
 .lang-switch button.on{color:#fff;border-color:var(--red);background:rgba(242,13,34,.14)}
 @media(max-width:640px){.lang-switch{margin-left:6px;gap:2px}.lang-switch button{padding:5px 7px;font-size:11px}}
+@media(max-width:760px){.topbar-inner{position:relative}.nav .lang-switch{position:absolute;top:14px;right:28px;margin:0}}
+@media(max-width:640px){.nav .lang-switch{top:16px;right:22px}}
